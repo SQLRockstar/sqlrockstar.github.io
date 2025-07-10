@@ -714,7 +714,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Thomas LaRock. All rights reserved.</p>
+            <p>&copy; <span id="current-year"></span> Thomas LaRock. All rights reserved.</p>
         </div>
     </footer>
 
@@ -756,6 +756,9 @@
         document.querySelectorAll('.stat-item, .skill-category, .project-card').forEach(el => {
             observer.observe(el);
         });
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
