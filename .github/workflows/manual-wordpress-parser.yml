@@ -41,7 +41,7 @@ jobs:
         
     - name: Parse WordPress XML and create Jekyll posts
       run: |
-        python3 << 'EOF'
+        python3 << 'PYTHONSCRIPT'
         import xml.etree.ElementTree as ET
         from bs4 import BeautifulSoup
         import re
@@ -174,11 +174,11 @@ tags: [{', '.join(f'"{tag}"' for tag in tags)}]
                 continue
         
         print(f"Successfully created {posts_created} posts")
-        EOF
+        PYTHONSCRIPT
         
     - name: Create Jekyll config
       run: |
-        cat > blog/_config.yml << 'ENDCONFIG'
+        cat > blog/_config.yml << 'CONFIGEND'
         title: Thomas LaRock's Blog
         description: Database and technology insights
         baseurl: "/blog"
@@ -193,20 +193,18 @@ tags: [{', '.join(f'"{tag}"' for tag in tags)}]
         markdown: kramdown
         highlighter: rouge
         theme: minima
-        ENDCONFIG
+        CONFIGEND
         
     - name: Create index page
       run: |
-        cat > blog/index.html << 'ENDINDEX'
-        ---
-        layout: home
-        title: Blog
-        ---
-        ENDINDEX
+        echo "---" > blog/index.html
+        echo "layout: home" >> blog/index.html
+        echo "title: Blog" >> blog/index.html
+        echo "---" >> blog/index.html
         
     - name: Create Gemfile
       run: |
-        cat > blog/Gemfile << 'ENDGEM'
+        cat > blog/Gemfile << 'GEMEND'
         source "https://rubygems.org"
         gem "jekyll", "~> 4.3.0"
         gem "minima", "~> 2.5"
@@ -216,7 +214,7 @@ tags: [{', '.join(f'"{tag}"' for tag in tags)}]
           gem "jekyll-sitemap"
           gem "jekyll-seo-tag"
         end
-        ENDGEM
+        GEMEND
         
     - name: Show results
       run: |
