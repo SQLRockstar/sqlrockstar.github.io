@@ -1,31 +1,48 @@
-name: WordPress to Jekyll Migration
+name: Debug WordPress Import
 
 on:
   workflow_dispatch:
     inputs:
-      xml_file:
-        description: 'Name of the WordPress XML file (should be uploaded to repository root)'
-        required: false
-        type: string
       xml_url:
-        description: 'URL to WordPress XML file (alternative to uploading file)'
-        required: false
+        description: 'URL to WordPress XML file'
+        required: true
         type: string
 
+permissions:
+  contents: write
+
 jobs:
-  migrate:
+  debug:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
-    - name: Set up Ruby
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Download and analyze XML file
+      run: |
+        echo "Downloading XML from: ${{ github.event.inputs.xml_url }}"
+        curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" -o wordpress-export.xml "${{ github.event.inputs.xml_url }}"
+        
+        echo "File downloaded. Size: $(wc -c < wordpress-export.xml) bytes"
+        echo "First 20 lines of XML:"
+        head -20 wordpress-export.xml
+        echo ""
+        echo "Checking for posts in XML:"
+        grep -c "<item>" wordpress-export.xml || echo "No items found"
+        grep -c "<wp:post_type>post</wp:post_type>" wordpress-export.xml || echo "No post types found"
+        echo ""
+        echo "Sample post titles:"
+        grep -A 1 "<title>" wordpress-export.xml | head -10
+        
+    - name: Set up Ruby and Jekyll
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0'
         
-    - name: Install Jekyll and dependencies
+    - name: Install dependencies
       run: |
         gem install jekyll bundler
         gem install jekyll-import
@@ -33,162 +50,42 @@ jobs:
         gem install open_uri_redirections
         gem install nokogiri
         
-    - name: Create blog directory structure
+    - name: Create blog directory
       run: |
         mkdir -p blog/_posts
         mkdir -p blog/assets/images
         
-    - name: Create Jekyll configuration
-      run: |
-        cat > blog/_config.yml << EOF
-        title: Thomas LaRock's Blog
-        description: Database and technology insights
-        baseurl: "/blog"
-        url: "https://sqlrockstar.github.io"
-        permalink: /:year/:month/:day/:title/
-        
-        plugins:
-          - jekyll-feed
-          - jekyll-sitemap
-          - jekyll-seo-tag
-        
-        markdown: kramdown
-        highlighter: rouge
-        theme: minima
-        
-        # Exclude files from processing
-        exclude:
-          - Gemfile
-          - Gemfile.lock
-          - node_modules
-          - vendor
-        EOF
-        
-    - name: Create Gemfile
-      run: |
-        cat > blog/Gemfile << EOF
-        source "https://rubygems.org"
-        gem "jekyll", "~> 4.3.0"
-        gem "minima", "~> 2.5"
-        
-        group :jekyll_plugins do
-          gem "jekyll-feed", "~> 0.12"
-          gem "jekyll-sitemap"
-          gem "jekyll-seo-tag"
-        end
-        
-        # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
-        # and associated library.
-        platforms :mingw, :x64_mingw, :mswin, :jruby do
-          gem "tzinfo", ">= 1", "< 3"
-          gem "tzinfo-data"
-        end
-        
-        # Performance-booster for watching directories on Windows
-        gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
-        
-        # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
-        # do not have a Java counterpart.
-        gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
-        EOF
-        
-    - name: Create index page
-      run: |
-        cat > blog/index.html << EOF
-        ---
-        layout: home
-        title: Blog
-        ---
-        
-        <h1>Welcome to My Blog</h1>
-        <p>This is my blog migrated from WordPress to Jekyll.</p>
-        EOF
-        
-    - name: Download WordPress XML if URL provided
-      if: ${{ github.event.inputs.xml_url }}
-      run: |
-        echo "Downloading XML from: ${{ github.event.inputs.xml_url }}"
-        # Try multiple methods to download the file
-        if curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" -o wordpress-export.xml "${{ github.event.inputs.xml_url }}"; then
-          echo "Downloaded successfully with curl"
-        elif wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" -O wordpress-export.xml "${{ github.event.inputs.xml_url }}"; then
-          echo "Downloaded successfully with wget"
-        else
-          echo "Download failed. Trying with different headers..."
-          curl -L -H "Accept: application/xml, text/xml, */*" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" -o wordpress-export.xml "${{ github.event.inputs.xml_url }}"
-        fi
-        
-        # Check if file was downloaded and has content
-        if [ -f wordpress-export.xml ] && [ -s wordpress-export.xml ]; then
-          echo "File downloaded successfully. Size: $(wc -c < wordpress-export.xml) bytes"
-          head -5 wordpress-export.xml
-        else
-          echo "Download failed or file is empty"
-          exit 1
-        fi
-        
-    - name: Convert WordPress XML to Jekyll posts
+    - name: Test Jekyll import with verbose output
       run: |
         cd blog
-        # Determine which XML file to use
-        if [ -f "../wordpress-export.xml" ]; then
-          XML_FILE="../wordpress-export.xml"
-        elif [ -f "../${{ github.event.inputs.xml_file }}" ]; then
-          XML_FILE="../${{ github.event.inputs.xml_file }}"
-        else
-          echo "No XML file found"
-          exit 1
-        fi
-        
+        echo "Starting Jekyll import..."
         ruby -r rubygems -e "
         require 'jekyll-import'
+        puts 'Jekyll import loaded successfully'
+        
+        # Enable verbose output
+        puts 'Starting WordPress.com import...'
+        
         JekyllImport::Importers::WordpressDotCom.run({
-          'source' => '$XML_FILE',
+          'source' => '../wordpress-export.xml',
           'no_fetch_images' => false,
           'assets_folder' => 'assets'
         })
-        "
         
-    - name: Clean up imported posts
+        puts 'Import completed'
+        " || echo "Import failed"
+        
+    - name: Check results
       run: |
         cd blog
-        # Remove any empty posts
-        find _posts -name "*.markdown" -size 0 -delete
-        # Fix image paths in posts
-        find _posts -name "*.markdown" -exec sed -i 's|https://thomaslarock.com/wp-content/uploads/|/blog/assets/images/|g' {} \;
-        
-    - name: Create README for blog
-      run: |
-        cat > blog/README.md << EOF
-        # Thomas LaRock's Blog
-        
-        This blog has been migrated from WordPress to Jekyll and is hosted on GitHub Pages.
-        
-        ## Local Development
-        
-        To run locally:
-        
-        \`\`\`bash
-        bundle install
-        bundle exec jekyll serve
-        \`\`\`
-        
-        Then visit http://localhost:4000/blog/
-        
-        ## Original WordPress Site
-        
-        Original content was migrated from: https://thomaslarock.com/blog/
-        EOF
-        
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add .
-        git commit -m "Migrate WordPress blog to Jekyll
-        
-        - Converted WordPress XML export to Jekyll posts
-        - Set up Jekyll configuration for /blog subdirectory
-        - Created basic blog structure and layout
-        - Migrated from: https://thomaslarock.com/blog/"
-        git push
+        echo "Files created in _posts directory:"
+        ls -la _posts/ || echo "No _posts directory or files"
+        echo ""
+        echo "Total files in _posts:"
+        find _posts -name "*.markdown" -o -name "*.md" | wc -l || echo "0"
+        echo ""
+        echo "Sample post files:"
+        find _posts -name "*.markdown" -o -name "*.md" | head -5
+        echo ""
+        echo "First few lines of a sample post:"
+        find _posts -name "*.markdown" -o -name "*.md" | head -1 | xargs head -10 || echo "No posts to show"
