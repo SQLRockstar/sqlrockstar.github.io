@@ -1,0 +1,219 @@
+name: WordPress to Jekyll Migration
+
+on:
+  workflow_dispatch:
+    inputs:
+      xml_url:
+        description: 'URL to WordPress XML export file'
+        required: true
+        type: string
+      commit_message:
+        description: 'Commit message for the migration'
+        required: false
+        default: 'Migrate WordPress posts to Jekyll'
+        type: string
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1'
+        bundler-cache: true
+        
+    - name: Install dependencies
+      run: |
+        gem install jekyll-import
+        gem install nokogiri
+        gem install reverse_markdown
+        
+    - name: Download WordPress XML
+      run: |
+        curl -L "${{ github.event.inputs.xml_url }}" -o wordpress-export.xml
+        
+    - name: Create conversion script
+      run: |
+        cat > convert.rb << 'EOF'
+        #!/usr/bin/env ruby
+        require 'jekyll-import'
+        require 'fileutils'
+        require 'yaml'
+        require 'date'
+        
+        # Create necessary directories
+        FileUtils.mkdir_p('_posts')
+        FileUtils.mkdir_p('_pages')
+        FileUtils.mkdir_p('assets/images')
+        
+        # Run the import
+        JekyllImport::Importers::WordpressDotCom.run({
+          "source" => "wordpress-export.xml",
+          "no_fetch_images" => true,
+          "assets_folder" => "assets/images"
+        })
+        
+        # Clean up and optimize posts
+        Dir.glob('_posts/*.md').each do |file|
+          content = File.read(file)
+          
+          # Extract front matter and content
+          if content =~ /\A(---\s*\n.*?\n?)^(---\s*$\n?)/m
+            front_matter = YAML.load($1)
+            post_content = content.sub(/\A(---\s*\n.*?\n?)^(---\s*$\n?)/m, '')
+            
+            # Clean up front matter
+            front_matter.delete('wordpress_id') if front_matter['wordpress_id']
+            front_matter.delete('wordpress_url') if front_matter['wordpress_url']
+            
+            # Ensure proper date format
+            if front_matter['date'].is_a?(String)
+              begin
+                front_matter['date'] = DateTime.parse(front_matter['date']).strftime('%Y-%m-%d %H:%M:%S %z')
+              rescue
+                # Keep original if parsing fails
+              end
+            end
+            
+            # Clean up categories and tags
+            if front_matter['categories'].is_a?(Array)
+              front_matter['categories'] = front_matter['categories'].map(&:strip).reject(&:empty?)
+            end
+            
+            if front_matter['tags'].is_a?(Array)
+              front_matter['tags'] = front_matter['tags'].map(&:strip).reject(&:empty?)
+            end
+            
+            # Write cleaned file
+            File.open(file, 'w') do |f|
+              f.write("---\n")
+              f.write(front_matter.to_yaml.sub(/^---\n/, ''))
+              f.write("---\n\n")
+              f.write(post_content)
+            end
+          end
+        end
+        
+        # Clean up pages
+        Dir.glob('_pages/*.md').each do |file|
+          content = File.read(file)
+          
+          if content =~ /\A(---\s*\n.*?\n?)^(---\s*$\n?)/m
+            front_matter = YAML.load($1)
+            post_content = content.sub(/\A(---\s*\n.*?\n?)^(---\s*$\n?)/m, '')
+            
+            # Add layout if missing
+            front_matter['layout'] ||= 'page'
+            
+            # Clean up front matter
+            front_matter.delete('wordpress_id') if front_matter['wordpress_id']
+            front_matter.delete('wordpress_url') if front_matter['wordpress_url']
+            
+            File.open(file, 'w') do |f|
+              f.write("---\n")
+              f.write(front_matter.to_yaml.sub(/^---\n/, ''))
+              f.write("---\n\n")
+              f.write(post_content)
+            end
+          end
+        end
+        
+        puts "Migration completed!"
+        puts "Posts created: #{Dir.glob('_posts/*.md').length}"
+        puts "Pages created: #{Dir.glob('_pages/*.md').length}"
+        EOF
+        
+    - name: Run conversion
+      run: ruby convert.rb
+      
+    - name: Create Jekyll config if not exists
+      run: |
+        if [ ! -f "_config.yml" ]; then
+          cat > _config.yml << 'EOF'
+        title: My Jekyll Blog
+        description: Migrated from WordPress
+        baseurl: ""
+        url: ""
+        
+        # Build settings
+        markdown: kramdown
+        highlighter: rouge
+        theme: minima
+        plugins:
+          - jekyll-feed
+          - jekyll-sitemap
+          - jekyll-seo-tag
+        
+        # Exclude from processing
+        exclude:
+          - Gemfile
+          - Gemfile.lock
+          - node_modules
+          - vendor/bundle/
+          - vendor/cache/
+          - vendor/gems/
+          - vendor/ruby/
+          - wordpress-export.xml
+          - convert.rb
+        EOF
+        fi
+        
+    - name: Create Gemfile if not exists
+      run: |
+        if [ ! -f "Gemfile" ]; then
+          cat > Gemfile << 'EOF'
+        source "https://rubygems.org"
+        
+        gem "jekyll", "~> 4.3"
+        gem "minima", "~> 2.5"
+        
+        group :jekyll_plugins do
+          gem "jekyll-feed", "~> 0.12"
+          gem "jekyll-sitemap"
+          gem "jekyll-seo-tag"
+        end
+        
+        # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
+        # and associated library.
+        platforms :mingw, :x64_mingw, :mswin, :jruby do
+          gem "tzinfo", ">= 1", "< 3"
+          gem "tzinfo-data"
+        end
+        
+        # Performance-booster for watching directories on Windows
+        gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+        
+        # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
+        # do not have a Java counterpart.
+        gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+        EOF
+        fi
+        
+    - name: Clean up temporary files
+      run: |
+        rm -f wordpress-export.xml convert.rb
+        
+    - name: Show migration results
+      run: |
+        echo "Migration Summary:"
+        echo "=================="
+        echo "Posts created: $(find _posts -name '*.md' | wc -l)"
+        echo "Pages created: $(find _pages -name '*.md' 2>/dev/null | wc -l || echo 0)"
+        echo ""
+        echo "Sample posts:"
+        ls -la _posts/ | head -5
+        
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "${{ github.event.inputs.commit_message }}" || echo "No changes to commit"
+        git push
