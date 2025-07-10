@@ -88,6 +88,8 @@ jobs:
                 # Get post data
                 title = item.find('title')
                 title_text = title.text if title is not None else 'Untitled'
+                # Escape quotes and special characters for YAML
+                title_text = title_text.replace('"', '\\"').replace("'", "\\'")
                 
                 # Get content
                 content = item.find('content:encoded', namespaces)
@@ -99,33 +101,44 @@ jobs:
                     try:
                         date_obj = date_parser.parse(pub_date.text)
                         date_str = date_obj.strftime('%Y-%m-%d')
-                        time_str = date_obj.strftime('%Y-%m-%d %H:%M:%S %z')
+                        # Use simpler date format for Jekyll
+                        time_str = date_obj.strftime('%Y-%m-%d %H:%M:%S')
                     except:
                         date_str = '2024-01-01'
-                        time_str = '2024-01-01 00:00:00 +0000'
+                        time_str = '2024-01-01 00:00:00'
                 else:
                     date_str = '2024-01-01'
-                    time_str = '2024-01-01 00:00:00 +0000'
+                    time_str = '2024-01-01 00:00:00'
                 
-                # Get slug
+                # Get slug - make it more robust
                 post_name = item.find('wp:post_name', namespaces)
                 if post_name is not None and post_name.text:
                     slug = post_name.text
                 else:
+                    # Create slug from title
                     slug = re.sub(r'[^a-zA-Z0-9\s-]', '', title_text.lower())
                     slug = re.sub(r'[-\s]+', '-', slug).strip('-')
+                    # Ensure slug is not empty
+                    if not slug:
+                        slug = 'untitled'
                 
-                # Get categories
+                # Get categories - ensure they're properly formatted
                 categories = []
                 for category in item.findall('category'):
-                    if category.get('domain') == 'category':
-                        categories.append(category.text)
+                    if category.get('domain') == 'category' and category.text:
+                        # Clean category names
+                        cat_name = category.text.strip()
+                        if cat_name:
+                            categories.append(cat_name)
                 
-                # Get tags
+                # Get tags - ensure they're properly formatted
                 tags = []
                 for tag in item.findall('category'):
-                    if tag.get('domain') == 'post_tag':
-                        tags.append(tag.text)
+                    if tag.get('domain') == 'post_tag' and tag.text:
+                        # Clean tag names
+                        tag_name = tag.text.strip()
+                        if tag_name:
+                            tags.append(tag_name)
                 
                 # Create Jekyll post
                 filename = f"{date_str}-{slug}.markdown"
@@ -137,13 +150,13 @@ jobs:
                     soup = BeautifulSoup(content_text, 'html.parser')
                     content_text = str(soup)
                 
-                # Create front matter
+                # Create front matter with proper YAML formatting
                 front_matter = f"""---
 layout: post
 title: "{title_text}"
 date: {time_str}
-categories: {categories}
-tags: {tags}
+categories: [{', '.join(f'"{cat}"' for cat in categories)}]
+tags: [{', '.join(f'"{tag}"' for tag in tags)}]
 ---
 
 {content_text}
