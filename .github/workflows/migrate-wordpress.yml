@@ -5,7 +5,11 @@ on:
     inputs:
       xml_file:
         description: 'Name of the WordPress XML file (should be uploaded to repository root)'
-        required: true
+        required: false
+        type: string
+      xml_url:
+        description: 'URL to WordPress XML file (alternative to uploading file)'
+        required: false
         type: string
 
 jobs:
@@ -100,13 +104,28 @@ jobs:
         <p>This is my blog migrated from WordPress to Jekyll.</p>
         EOF
         
+    - name: Download WordPress XML if URL provided
+      if: ${{ github.event.inputs.xml_url }}
+      run: |
+        wget -O wordpress-export.xml "${{ github.event.inputs.xml_url }}"
+        
     - name: Convert WordPress XML to Jekyll posts
       run: |
         cd blog
+        # Determine which XML file to use
+        if [ -f "../wordpress-export.xml" ]; then
+          XML_FILE="../wordpress-export.xml"
+        elif [ -f "../${{ github.event.inputs.xml_file }}" ]; then
+          XML_FILE="../${{ github.event.inputs.xml_file }}"
+        else
+          echo "No XML file found"
+          exit 1
+        fi
+        
         ruby -r rubygems -e "
         require 'jekyll-import'
         JekyllImport::Importers::WordpressDotCom.run({
-          'source' => '../${{ github.event.inputs.xml_file }}',
+          'source' => '$XML_FILE',
           'no_fetch_images' => false,
           'assets_folder' => 'assets'
         })
