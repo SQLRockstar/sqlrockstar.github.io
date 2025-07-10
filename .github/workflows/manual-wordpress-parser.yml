@@ -165,7 +165,7 @@ tags: {tags}
         
     - name: Create Jekyll config
       run: |
-        cat > blog/_config.yml << EOF
+        cat > blog/_config.yml << 'EOF'
         title: Thomas LaRock's Blog
         description: Database and technology insights
         baseurl: "/blog"
@@ -184,7 +184,7 @@ tags: {tags}
         
     - name: Create index page
       run: |
-        cat > blog/index.html << EOF
+        cat > blog/index.html << 'EOF'
         ---
         layout: home
         title: Blog
@@ -193,7 +193,7 @@ tags: {tags}
         
     - name: Create Gemfile
       run: |
-        cat > blog/Gemfile << EOF
+        cat > blog/Gemfile << 'EOF'
         source "https://rubygems.org"
         gem "jekyll", "~> 4.3.0"
         gem "minima", "~> 2.5"
