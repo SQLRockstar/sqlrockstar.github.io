@@ -1,0 +1,157 @@
+name: WordPress to Jekyll Migration
+
+on:
+  workflow_dispatch:
+    inputs:
+      xml_file:
+        description: 'Name of the WordPress XML file (should be uploaded to repository root)'
+        required: true
+        type: string
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        
+    - name: Install Jekyll and dependencies
+      run: |
+        gem install jekyll bundler
+        gem install jekyll-import
+        gem install hpricot
+        gem install open_uri_redirections
+        gem install nokogiri
+        
+    - name: Create blog directory structure
+      run: |
+        mkdir -p blog/_posts
+        mkdir -p blog/assets/images
+        
+    - name: Create Jekyll configuration
+      run: |
+        cat > blog/_config.yml << EOF
+        title: Thomas LaRock's Blog
+        description: Database and technology insights
+        baseurl: "/blog"
+        url: "https://sqlrockstar.github.io"
+        permalink: /:year/:month/:day/:title/
+        
+        plugins:
+          - jekyll-feed
+          - jekyll-sitemap
+          - jekyll-seo-tag
+        
+        markdown: kramdown
+        highlighter: rouge
+        theme: minima
+        
+        # Exclude files from processing
+        exclude:
+          - Gemfile
+          - Gemfile.lock
+          - node_modules
+          - vendor
+        EOF
+        
+    - name: Create Gemfile
+      run: |
+        cat > blog/Gemfile << EOF
+        source "https://rubygems.org"
+        gem "jekyll", "~> 4.3.0"
+        gem "minima", "~> 2.5"
+        
+        group :jekyll_plugins do
+          gem "jekyll-feed", "~> 0.12"
+          gem "jekyll-sitemap"
+          gem "jekyll-seo-tag"
+        end
+        
+        # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
+        # and associated library.
+        platforms :mingw, :x64_mingw, :mswin, :jruby do
+          gem "tzinfo", ">= 1", "< 3"
+          gem "tzinfo-data"
+        end
+        
+        # Performance-booster for watching directories on Windows
+        gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+        
+        # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
+        # do not have a Java counterpart.
+        gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+        EOF
+        
+    - name: Create index page
+      run: |
+        cat > blog/index.html << EOF
+        ---
+        layout: home
+        title: Blog
+        ---
+        
+        <h1>Welcome to My Blog</h1>
+        <p>This is my blog migrated from WordPress to Jekyll.</p>
+        EOF
+        
+    - name: Convert WordPress XML to Jekyll posts
+      run: |
+        cd blog
+        ruby -r rubygems -e "
+        require 'jekyll-import'
+        JekyllImport::Importers::WordpressDotCom.run({
+          'source' => '../${{ github.event.inputs.xml_file }}',
+          'no_fetch_images' => false,
+          'assets_folder' => 'assets'
+        })
+        "
+        
+    - name: Clean up imported posts
+      run: |
+        cd blog
+        # Remove any empty posts
+        find _posts -name "*.markdown" -size 0 -delete
+        # Fix image paths in posts
+        find _posts -name "*.markdown" -exec sed -i 's|https://thomaslarock.com/wp-content/uploads/|/blog/assets/images/|g' {} \;
+        
+    - name: Create README for blog
+      run: |
+        cat > blog/README.md << EOF
+        # Thomas LaRock's Blog
+        
+        This blog has been migrated from WordPress to Jekyll and is hosted on GitHub Pages.
+        
+        ## Local Development
+        
+        To run locally:
+        
+        \`\`\`bash
+        bundle install
+        bundle exec jekyll serve
+        \`\`\`
+        
+        Then visit http://localhost:4000/blog/
+        
+        ## Original WordPress Site
+        
+        Original content was migrated from: https://thomaslarock.com/blog/
+        EOF
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Migrate WordPress blog to Jekyll
+        
+        - Converted WordPress XML export to Jekyll posts
+        - Set up Jekyll configuration for /blog subdirectory
+        - Created basic blog structure and layout
+        - Migrated from: https://thomaslarock.com/blog/"
+        git push
