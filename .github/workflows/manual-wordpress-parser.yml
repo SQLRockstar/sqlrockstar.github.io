@@ -176,45 +176,53 @@ tags: [{', '.join(f'"{tag}"' for tag in tags)}]
         print(f"Successfully created {posts_created} posts")
         PYTHONSCRIPT
         
-    - name: Create Jekyll config
+    - name: Create Jekyll configuration files
       run: |
-        cat > blog/_config.yml << 'CONFIGEND'
-        title: Thomas LaRock's Blog
-        description: Database and technology insights
-        baseurl: "/blog"
-        url: "https://sqlrockstar.github.io"
-        permalink: /:year/:month/:day/:title/
+        python3 << 'CREATEFILES'
+        # Create Jekyll config
+        config_content = """title: Thomas LaRock's Blog
+description: Database and technology insights
+baseurl: "/blog"
+url: "https://sqlrockstar.github.io"
+permalink: /:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+markdown: kramdown
+highlighter: rouge
+theme: minima
+"""
+        with open('blog/_config.yml', 'w') as f:
+            f.write(config_content)
         
-        plugins:
-          - jekyll-feed
-          - jekyll-sitemap
-          - jekyll-seo-tag
+        # Create index page
+        index_content = """---
+layout: home
+title: Blog
+---
+"""
+        with open('blog/index.html', 'w') as f:
+            f.write(index_content)
         
-        markdown: kramdown
-        highlighter: rouge
-        theme: minima
-        CONFIGEND
+        # Create Gemfile
+        gemfile_content = """source "https://rubygems.org"
+gem "jekyll", "~> 4.3.0"
+gem "minima", "~> 2.5"
+
+group :jekyll_plugins do
+  gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-sitemap"
+  gem "jekyll-seo-tag"
+end
+"""
+        with open('blog/Gemfile', 'w') as f:
+            f.write(gemfile_content)
         
-    - name: Create index page
-      run: |
-        echo "---" > blog/index.html
-        echo "layout: home" >> blog/index.html
-        echo "title: Blog" >> blog/index.html
-        echo "---" >> blog/index.html
-        
-    - name: Create Gemfile
-      run: |
-        cat > blog/Gemfile << 'GEMEND'
-        source "https://rubygems.org"
-        gem "jekyll", "~> 4.3.0"
-        gem "minima", "~> 2.5"
-        
-        group :jekyll_plugins do
-          gem "jekyll-feed", "~> 0.12"
-          gem "jekyll-sitemap"
-          gem "jekyll-seo-tag"
-        end
-        GEMEND
+        print("Jekyll configuration files created successfully")
+        CREATEFILES
         
     - name: Show results
       run: |
