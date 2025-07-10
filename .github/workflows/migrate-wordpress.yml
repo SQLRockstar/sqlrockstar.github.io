@@ -107,7 +107,25 @@ jobs:
     - name: Download WordPress XML if URL provided
       if: ${{ github.event.inputs.xml_url }}
       run: |
-        wget -O wordpress-export.xml "${{ github.event.inputs.xml_url }}"
+        echo "Downloading XML from: ${{ github.event.inputs.xml_url }}"
+        # Try multiple methods to download the file
+        if curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" -o wordpress-export.xml "${{ github.event.inputs.xml_url }}"; then
+          echo "Downloaded successfully with curl"
+        elif wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" -O wordpress-export.xml "${{ github.event.inputs.xml_url }}"; then
+          echo "Downloaded successfully with wget"
+        else
+          echo "Download failed. Trying with different headers..."
+          curl -L -H "Accept: application/xml, text/xml, */*" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" -o wordpress-export.xml "${{ github.event.inputs.xml_url }}"
+        fi
+        
+        # Check if file was downloaded and has content
+        if [ -f wordpress-export.xml ] && [ -s wordpress-export.xml ]; then
+          echo "File downloaded successfully. Size: $(wc -c < wordpress-export.xml) bytes"
+          head -5 wordpress-export.xml
+        else
+          echo "Download failed or file is empty"
+          exit 1
+        fi
         
     - name: Convert WordPress XML to Jekyll posts
       run: |
