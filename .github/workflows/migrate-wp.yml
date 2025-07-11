@@ -122,68 +122,87 @@ jobs:
         puts "Found #{items.length} items in XML"
         
         items.each_with_index do |item, index|
-          # Extract post data with proper namespace handling
-          post_type = item.xpath('.//wp:post_type', namespaces).text.strip
-          status = item.xpath('.//wp:status', namespaces).text.strip
-          
-          puts "Item #{index + 1}: type='#{post_type}', status='#{status}'"
-          
-          next unless ['post', 'page'].include?(post_type)
-          next unless status == 'publish'
-          
-          title = item.xpath('.//title').text.strip
-          content = item.xpath('.//content:encoded', namespaces).text.strip
-          pub_date = item.xpath('.//pubDate').text.strip
-          post_name = item.xpath('.//wp:post_name', namespaces).text.strip
-          post_date = item.xpath('.//wp:post_date', namespaces).text.strip
-          
-          # Use WordPress post_date if available, otherwise pubDate
-          date_str = post_date.empty? ? pub_date : post_date
-          
-          # Parse date
           begin
-            date = DateTime.parse(date_str)
-          rescue
-            puts "Could not parse date: #{date_str}, using current time"
-            date = DateTime.now
+            # Extract post data with proper namespace handling
+            post_type = item.xpath('.//wp:post_type', namespaces).text.strip
+            status = item.xpath('.//wp:status', namespaces).text.strip
+            
+            puts "Item #{index + 1}: type='#{post_type}', status='#{status}'"
+            
+            next unless ['post', 'page'].include?(post_type)
+            next unless status == 'publish'
+            
+            title = item.xpath('.//title').text.strip
+            content = item.xpath('.//content:encoded', namespaces).text.strip
+            pub_date = item.xpath('.//pubDate').text.strip
+            post_name = item.xpath('.//wp:post_name', namespaces).text.strip
+            post_date = item.xpath('.//wp:post_date', namespaces).text.strip
+            
+            puts "Processing: '#{title}'"
+            
+            # Use WordPress post_date if available, otherwise pubDate
+            date_str = post_date.empty? ? pub_date : post_date
+            
+            # Parse date
+            begin
+              date = DateTime.parse(date_str)
+            rescue => date_error
+              puts "Could not parse date: #{date_str}, using current time (Error: #{date_error.message})"
+              date = DateTime.now
+            end
+            
+            # Create safe filename
+            safe_title = title.downcase.gsub(/[^a-z0-9]+/, '-').gsub(/-+/, '-').strip('-')
+            slug = post_name.empty? ? safe_title : post_name
+            
+            # Ensure slug is not empty
+            if slug.empty?
+              slug = "post-#{index + 1}"
+            end
+            
+            if post_type == 'post'
+              filename = "_posts/#{date.strftime('%Y-%m-%d')}-#{slug}.md"
+            else
+              filename = "_pages/#{slug}.md"
+            end
+            
+            puts "Creating file: #{filename}"
+            
+            # Extract categories and tags
+            categories = item.xpath('.//category[@domain="category"]').map(&:text).map(&:strip).reject(&:empty?)
+            tags = item.xpath('.//category[@domain="post_tag"]').map(&:text).map(&:strip).reject(&:empty?)
+            
+            # Create front matter
+            front_matter = {
+              'layout' => post_type == 'post' ? 'post' : 'page',
+              'title' => title,
+              'date' => date.strftime('%Y-%m-%d %H:%M:%S %z')
+            }
+            
+            front_matter['categories'] = categories unless categories.empty?
+            front_matter['tags'] = tags unless tags.empty?
+            
+            # Convert WordPress blocks to cleaner HTML/Markdown
+            clean_content = content.gsub(/<!-- wp:.*?-->/, '').gsub(/<!-- \/wp:.*?-->/, '').strip
+            
+            # Write file
+            File.open(filename, 'w') do |f|
+              f.write("---\n")
+              f.write(front_matter.to_yaml.sub(/^---\n/, ''))
+              f.write("---\n\n")
+              f.write(clean_content)
+            end
+            
+            puts "✓ Created: #{filename}"
+            
+          rescue => e
+            puts "ERROR processing item #{index + 1}: #{e.message}"
+            puts "  Title: #{title rescue 'N/A'}"
+            puts "  Post Type: #{post_type rescue 'N/A'}"
+            puts "  Status: #{status rescue 'N/A'}"
+            puts "  Error details: #{e.backtrace.first}"
+            # Continue with next item instead of crashing
           end
-          
-          # Create safe filename
-          safe_title = title.downcase.gsub(/[^a-z0-9]+/, '-').gsub(/-+/, '-').strip('-')
-          slug = post_name.empty? ? safe_title : post_name
-          
-          if post_type == 'post'
-            filename = "_posts/#{date.strftime('%Y-%m-%d')}-#{slug}.md"
-          else
-            filename = "_pages/#{slug}.md"
-          end
-          
-          # Extract categories and tags
-          categories = item.xpath('.//category[@domain="category"]').map(&:text).reject(&:empty?)
-          tags = item.xpath('.//category[@domain="post_tag"]').map(&:text).reject(&:empty?)
-          
-          # Create front matter
-          front_matter = {
-            'layout' => post_type == 'post' ? 'post' : 'page',
-            'title' => title,
-            'date' => date.strftime('%Y-%m-%d %H:%M:%S %z')
-          }
-          
-          front_matter['categories'] = categories unless categories.empty?
-          front_matter['tags'] = tags unless tags.empty?
-          
-          # Convert WordPress blocks to cleaner HTML/Markdown
-          clean_content = content.gsub(/<!-- wp:.*?-->/, '').gsub(/<!-- \/wp:.*?-->/, '').strip
-          
-          # Write file
-          File.open(filename, 'w') do |f|
-            f.write("---\n")
-            f.write(front_matter.to_yaml.sub(/^---\n/, ''))
-            f.write("---\n\n")
-            f.write(clean_content)
-          end
-          
-          puts "✓ Created: #{filename}"
         end
         
         # Clean up and optimize posts
