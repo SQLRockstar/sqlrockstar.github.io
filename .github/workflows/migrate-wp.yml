@@ -25,10 +25,14 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.1'
-        bundler-cache: true
+      run: |
+        # Use Ubuntu's built-in Ruby to avoid action server issues
+        sudo apt-get update
+        sudo apt-get install -y ruby-full build-essential zlib1g-dev
+        echo "Ruby version:"
+        ruby --version
+        echo "Gem version:"
+        gem --version
         
     - name: Install dependencies
       run: |
