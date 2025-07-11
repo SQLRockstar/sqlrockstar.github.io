@@ -87,76 +87,82 @@ jobs:
           puts File.read('wordpress-export.xml')[0..500]
         end
         
-        # Try the import
-        begin
-          JekyllImport::Importers::WordpressDotCom.run({
-            "source" => "wordpress-export.xml",
-            "no_fetch_images" => true,
-            "assets_folder" => "assets/images"
-          })
-        rescue => e
-          puts "Jekyll import failed: #{e.message}"
-          puts "Trying alternative approach..."
+        # Use manual parsing approach (more reliable)
+        doc = Nokogiri::XML(File.read('wordpress-export.xml'))
+        
+        # Define namespaces properly
+        namespaces = {
+          'wp' => 'http://wordpress.org/export/1.2/',
+          'content' => 'http://purl.org/rss/1.0/modules/content/',
+          'dc' => 'http://purl.org/dc/elements/1.1/'
+        }
+        
+        items = doc.xpath('//item')
+        puts "Found #{items.length} items in XML"
+        
+        items.each_with_index do |item, index|
+          # Extract post data with proper namespace handling
+          post_type = item.xpath('.//wp:post_type', namespaces).text
+          status = item.xpath('.//wp:status', namespaces).text
           
-          # Manual parsing approach
-          doc = Nokogiri::XML(File.read('wordpress-export.xml'))
+          puts "Item #{index + 1}: type=#{post_type}, status=#{status}"
           
-          # Handle namespaces properly
-          doc.remove_namespaces!
+          next unless ['post', 'page'].include?(post_type)
+          next unless status == 'publish'
           
-          items = doc.xpath('//item')
-          puts "Found #{items.length} items after removing namespaces"
+          title = item.xpath('.//title').text
+          content = item.xpath('.//content:encoded', namespaces).text
+          pub_date = item.xpath('.//pubDate').text
+          post_name = item.xpath('.//wp:post_name', namespaces).text
+          post_date = item.xpath('.//wp:post_date', namespaces).text
           
-          items.each do |item|
-            post_type = item.xpath('.//post_type').text
-            status = item.xpath('.//status').text
-            
-            next unless ['post', 'page'].include?(post_type)
-            next unless status == 'publish'
-            
-            title = item.xpath('.//title').text
-            content = item.xpath('.//encoded').text
-            pub_date = item.xpath('.//pubDate').text
-            post_name = item.xpath('.//post_name').text
-            
-            # Parse date
-            begin
-              date = DateTime.parse(pub_date)
-            rescue
-              date = DateTime.now
-            end
-            
-            # Create filename
-            if post_type == 'post'
-              filename = "_posts/#{date.strftime('%Y-%m-%d')}-#{post_name.empty? ? title.downcase.gsub(/[^a-z0-9]+/, '-') : post_name}.md"
-            else
-              filename = "_pages/#{post_name.empty? ? title.downcase.gsub(/[^a-z0-9]+/, '-') : post_name}.md"
-            end
-            
-            # Extract categories and tags
-            categories = item.xpath('.//category[@domain="category"]').map(&:text)
-            tags = item.xpath('.//category[@domain="post_tag"]').map(&:text)
-            
-            # Create front matter
-            front_matter = {
-              'layout' => post_type == 'post' ? 'post' : 'page',
-              'title' => title,
-              'date' => date.strftime('%Y-%m-%d %H:%M:%S %z')
-            }
-            
-            front_matter['categories'] = categories unless categories.empty?
-            front_matter['tags'] = tags unless tags.empty?
-            
-            # Write file
-            File.open(filename, 'w') do |f|
-              f.write("---\n")
-              f.write(front_matter.to_yaml.sub(/^---\n/, ''))
-              f.write("---\n\n")
-              f.write(content)
-            end
-            
-            puts "Created: #{filename}"
+          # Use WordPress post_date if available, otherwise pubDate
+          date_str = post_date.empty? ? pub_date : post_date
+          
+          # Parse date
+          begin
+            date = DateTime.parse(date_str)
+          rescue
+            puts "Could not parse date: #{date_str}, using current time"
+            date = DateTime.now
           end
+          
+          # Create safe filename
+          safe_title = title.downcase.gsub(/[^a-z0-9]+/, '-').gsub(/-+/, '-').strip('-')
+          slug = post_name.empty? ? safe_title : post_name
+          
+          if post_type == 'post'
+            filename = "_posts/#{date.strftime('%Y-%m-%d')}-#{slug}.md"
+          else
+            filename = "_pages/#{slug}.md"
+          end
+          
+          # Extract categories and tags
+          categories = item.xpath('.//category[@domain="category"]').map(&:text).reject(&:empty?)
+          tags = item.xpath('.//category[@domain="post_tag"]').map(&:text).reject(&:empty?)
+          
+          # Create front matter
+          front_matter = {
+            'layout' => post_type == 'post' ? 'post' : 'page',
+            'title' => title,
+            'date' => date.strftime('%Y-%m-%d %H:%M:%S %z')
+          }
+          
+          front_matter['categories'] = categories unless categories.empty?
+          front_matter['tags'] = tags unless tags.empty?
+          
+          # Convert WordPress blocks to cleaner HTML/Markdown
+          clean_content = content.gsub(/<!-- wp:.*?-->/, '').gsub(/<!-- \/wp:.*?-->/, '').strip
+          
+          # Write file
+          File.open(filename, 'w') do |f|
+            f.write("---\n")
+            f.write(front_matter.to_yaml.sub(/^---\n/, ''))
+            f.write("---\n\n")
+            f.write(clean_content)
+          end
+          
+          puts "✓ Created: #{filename}"
         end
         
         # Clean up and optimize posts
