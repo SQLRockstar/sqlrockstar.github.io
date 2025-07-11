@@ -34,6 +34,7 @@ jobs:
         gem install jekyll-import
         gem install nokogiri
         gem install reverse_markdown
+        gem install open_uri_redirections
         
     - name: Download WordPress XML
       run: |
