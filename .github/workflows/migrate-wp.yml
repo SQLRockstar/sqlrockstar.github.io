@@ -36,10 +36,15 @@ jobs:
         
     - name: Install dependencies
       run: |
-        gem install jekyll-import
-        gem install nokogiri
-        gem install reverse_markdown
-        gem install open_uri_redirections
+        # Install gems with sudo to avoid permission issues
+        sudo gem install jekyll-import
+        sudo gem install nokogiri
+        sudo gem install reverse_markdown
+        sudo gem install open_uri_redirections
+        
+        # Verify installations
+        echo "Installed gems:"
+        gem list | grep -E "(jekyll-import|nokogiri|reverse_markdown|open_uri_redirections)"
         
     - name: Check WordPress XML file
       run: |
