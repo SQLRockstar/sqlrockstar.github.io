@@ -39,6 +39,11 @@ jobs:
     - name: Download WordPress XML
       run: |
         curl -L "${{ github.event.inputs.xml_url }}" -o wordpress-export.xml
+        echo "Downloaded XML file:"
+        ls -la wordpress-export.xml
+        echo "File size: $(wc -c < wordpress-export.xml) bytes"
+        echo "First 10 lines of XML:"
+        head -10 wordpress-export.xml
         
     - name: Create conversion script
       run: |
@@ -48,21 +53,115 @@ jobs:
         require 'fileutils'
         require 'yaml'
         require 'date'
+        require 'nokogiri'
         
         # Create necessary directories
         FileUtils.mkdir_p('_posts')
         FileUtils.mkdir_p('_pages')
         FileUtils.mkdir_p('assets/images')
         
-        # Run the import
-        JekyllImport::Importers::WordpressDotCom.run({
-          "source" => "wordpress-export.xml",
-          "no_fetch_images" => true,
-          "assets_folder" => "assets/images"
-        })
+        puts "Starting WordPress import..."
+        puts "XML file exists: #{File.exist?('wordpress-export.xml')}"
+        puts "XML file size: #{File.size('wordpress-export.xml')} bytes"
+        
+        # Check XML structure first
+        begin
+          doc = Nokogiri::XML(File.read('wordpress-export.xml'))
+          items = doc.xpath('//item')
+          posts = items.select { |item| item.xpath('.//wp:post_type').text == 'post' }
+          pages = items.select { |item| item.xpath('.//wp:post_type').text == 'page' }
+          
+          puts "Found #{items.length} total items"
+          puts "Found #{posts.length} posts"
+          puts "Found #{pages.length} pages"
+          
+          if items.length == 0
+            puts "No items found in XML. Checking XML structure..."
+            puts "Root element: #{doc.root.name}"
+            puts "Channel exists: #{!doc.xpath('//channel').empty?}"
+            puts "Items without namespace: #{doc.xpath('//item').length}"
+          end
+        rescue => e
+          puts "Error parsing XML: #{e.message}"
+          puts "XML content preview:"
+          puts File.read('wordpress-export.xml')[0..500]
+        end
+        
+        # Try the import
+        begin
+          JekyllImport::Importers::WordpressDotCom.run({
+            "source" => "wordpress-export.xml",
+            "no_fetch_images" => true,
+            "assets_folder" => "assets/images"
+          })
+        rescue => e
+          puts "Jekyll import failed: #{e.message}"
+          puts "Trying alternative approach..."
+          
+          # Manual parsing approach
+          doc = Nokogiri::XML(File.read('wordpress-export.xml'))
+          
+          # Handle namespaces properly
+          doc.remove_namespaces!
+          
+          items = doc.xpath('//item')
+          puts "Found #{items.length} items after removing namespaces"
+          
+          items.each do |item|
+            post_type = item.xpath('.//post_type').text
+            status = item.xpath('.//status').text
+            
+            next unless ['post', 'page'].include?(post_type)
+            next unless status == 'publish'
+            
+            title = item.xpath('.//title').text
+            content = item.xpath('.//encoded').text
+            pub_date = item.xpath('.//pubDate').text
+            post_name = item.xpath('.//post_name').text
+            
+            # Parse date
+            begin
+              date = DateTime.parse(pub_date)
+            rescue
+              date = DateTime.now
+            end
+            
+            # Create filename
+            if post_type == 'post'
+              filename = "_posts/#{date.strftime('%Y-%m-%d')}-#{post_name.empty? ? title.downcase.gsub(/[^a-z0-9]+/, '-') : post_name}.md"
+            else
+              filename = "_pages/#{post_name.empty? ? title.downcase.gsub(/[^a-z0-9]+/, '-') : post_name}.md"
+            end
+            
+            # Extract categories and tags
+            categories = item.xpath('.//category[@domain="category"]').map(&:text)
+            tags = item.xpath('.//category[@domain="post_tag"]').map(&:text)
+            
+            # Create front matter
+            front_matter = {
+              'layout' => post_type == 'post' ? 'post' : 'page',
+              'title' => title,
+              'date' => date.strftime('%Y-%m-%d %H:%M:%S %z')
+            }
+            
+            front_matter['categories'] = categories unless categories.empty?
+            front_matter['tags'] = tags unless tags.empty?
+            
+            # Write file
+            File.open(filename, 'w') do |f|
+              f.write("---\n")
+              f.write(front_matter.to_yaml.sub(/^---\n/, ''))
+              f.write("---\n\n")
+              f.write(content)
+            end
+            
+            puts "Created: #{filename}"
+          end
+        end
         
         # Clean up and optimize posts
         Dir.glob('_posts/*.md').each do |file|
+          puts "Processing post: #{file}"
           content = File.read(file)
           
           # Extract front matter and content
@@ -104,6 +203,7 @@ jobs:
         
         # Clean up pages
         Dir.glob('_pages/*.md').each do |file|
+          puts "Processing page: #{file}"
           content = File.read(file)
           
           if content =~ /\A(---\s*\n.*?\n?)^(---\s*$\n?)/m
@@ -129,6 +229,12 @@ jobs:
         puts "Migration completed!"
         puts "Posts created: #{Dir.glob('_posts/*.md').length}"
         puts "Pages created: #{Dir.glob('_pages/*.md').length}"
+        
+        # List all created files
+        puts "\nCreated posts:"
+        Dir.glob('_posts/*.md').each { |f| puts "  #{f}" }
+        puts "\nCreated pages:"
+        Dir.glob('_pages/*.md').each { |f| puts "  #{f}" }
         EOF
         
     - name: Run conversion
