@@ -3,9 +3,10 @@ name: WordPress to Jekyll Migration
 on:
   workflow_dispatch:
     inputs:
-      xml_url:
-        description: 'URL to WordPress XML export file'
+      xml_file_path:
+        description: 'Path to WordPress XML export file in repository'
         required: true
+        default: 'data/thomaslarock.WordPress.2020-2024.xml'
         type: string
       commit_message:
         description: 'Commit message for the migration'
@@ -36,10 +37,21 @@ jobs:
         gem install reverse_markdown
         gem install open_uri_redirections
         
-    - name: Download WordPress XML
+    - name: Check WordPress XML file
       run: |
-        curl -L "${{ github.event.inputs.xml_url }}" -o wordpress-export.xml
-        echo "Downloaded XML file:"
+        XML_FILE="${{ github.event.inputs.xml_file_path }}"
+        
+        if [ ! -f "$XML_FILE" ]; then
+          echo "ERROR: XML file not found at $XML_FILE"
+          echo "Available files in data directory:"
+          ls -la data/ || echo "No data directory found"
+          exit 1
+        fi
+        
+        # Copy to expected location for the conversion script
+        cp "$XML_FILE" wordpress-export.xml
+        
+        echo "Using XML file: $XML_FILE"
         ls -la wordpress-export.xml
         echo "File size: $(wc -c < wordpress-export.xml) bytes"
         echo "First 10 lines of XML:"
@@ -273,6 +285,7 @@ jobs:
           - vendor/cache/
           - vendor/gems/
           - vendor/ruby/
+          - data/
           - wordpress-export.xml
           - convert.rb
         EOF
