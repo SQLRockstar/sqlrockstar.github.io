@@ -89,8 +89,8 @@ jobs:
         begin
           doc = Nokogiri::XML(File.read('wordpress-export.xml'))
           items = doc.xpath('//item')
-          posts = items.select { |item| item.xpath('.//wp:post_type').text == 'post' }
-          pages = items.select { |item| item.xpath('.//wp:post_type').text == 'page' }
+          posts = items.select { |item| item.xpath('.//wp:post_type').text.strip == 'post' }
+          pages = items.select { |item| item.xpath('.//wp:post_type').text.strip == 'page' }
           
           puts "Found #{items.length} total items"
           puts "Found #{posts.length} posts"
@@ -123,19 +123,19 @@ jobs:
         
         items.each_with_index do |item, index|
           # Extract post data with proper namespace handling
-          post_type = item.xpath('.//wp:post_type', namespaces).text
-          status = item.xpath('.//wp:status', namespaces).text
+          post_type = item.xpath('.//wp:post_type', namespaces).text.strip
+          status = item.xpath('.//wp:status', namespaces).text.strip
           
-          puts "Item #{index + 1}: type=#{post_type}, status=#{status}"
+          puts "Item #{index + 1}: type='#{post_type}', status='#{status}'"
           
           next unless ['post', 'page'].include?(post_type)
           next unless status == 'publish'
           
-          title = item.xpath('.//title').text
-          content = item.xpath('.//content:encoded', namespaces).text
-          pub_date = item.xpath('.//pubDate').text
-          post_name = item.xpath('.//wp:post_name', namespaces).text
-          post_date = item.xpath('.//wp:post_date', namespaces).text
+          title = item.xpath('.//title').text.strip
+          content = item.xpath('.//content:encoded', namespaces).text.strip
+          pub_date = item.xpath('.//pubDate').text.strip
+          post_name = item.xpath('.//wp:post_name', namespaces).text.strip
+          post_date = item.xpath('.//wp:post_date', namespaces).text.strip
           
           # Use WordPress post_date if available, otherwise pubDate
           date_str = post_date.empty? ? pub_date : post_date
