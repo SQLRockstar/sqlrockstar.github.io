@@ -152,7 +152,7 @@ jobs:
             end
             
             # Create safe filename
-            safe_title = title.downcase.gsub(/[^a-z0-9]+/, '-').gsub(/-+/, '-').strip('-')
+            safe_title = title.downcase.gsub(/[^a-z0-9]+/, '-').gsub(/-+/, '-').gsub(/^-+|-+$/, '')
             slug = post_name.empty? ? safe_title : post_name
             
             # Ensure slug is not empty
