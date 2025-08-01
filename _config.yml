@@ -1,19 +1,30 @@
-title: My Jekyll Blog
-description: Migrated from WordPress
-baseurl: ""
-url: ""
+# Site settings
+title: Thomas LaRock
+email: your-email@example.com
+description: > # this means to ignore newlines until "baseurl:"
+  Data engineering, developer advocacy, and technical leadership insights
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://sqlrockstar.github.io" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: minima
+permalink: /:title/
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:title/
+
+# Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-seo-tag
 
 # Exclude from processing
 exclude:
+  - README.md
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -21,5 +32,7 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - wordpress-export.xml
-  - convert.rb
+
+# GitHub Pages specific settings
+github_username: sqlrockstar
+timezone: America/New_York
