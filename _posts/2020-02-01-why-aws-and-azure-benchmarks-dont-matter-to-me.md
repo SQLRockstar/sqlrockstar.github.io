@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: Why AWS and Azure Benchmarks Don't Matter to Me
 date: '2020-02-01 12:06:23 +0000'
 categories:
