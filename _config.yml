@@ -11,13 +11,13 @@ url: "https://sqlrockstar.github.io" # the base hostname & protocol for your sit
 # Build settings
 markdown: kramdown
 highlighter: rouge
-permalink: /:year/:month/:title/
+permalink: /:title/
 
 # Collections
 collections:
   posts:
     output: true
-    permalink: /:title/
+    permalink: /:year/:month/:title/
 
 # Plugins
 plugins:
