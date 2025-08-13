@@ -1,0 +1,93 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 12.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:PUBLISH
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VEVENT
+CLASS:PUBLIC
+CREATED:20090612T182225Z
+DESCRIPTION:SQL Server 2008 for Developers \n\nwith Mladen Prajdic \n\nTues
+	day June 16th 1:00pm EST\n\nWhat should developers know about database des
+	ign so they don't have performance and logical problems?\n\nWhat's new in 
+	SQL Server 2008 that helps solve some business problems that sometime requ
+	ired "hacking" before.\n\nConcurrency design models and isolation levels.\
+	n\nLive Meeting Information\nAttendee URL: https://www.livemeeting.com/cc/
+	usergroups/join?id=MGWF7G&amp\;role=attend&amp\;pw=2mqPKT%3E%3FH <https://
+	www.livemeeting.com/cc/usergroups/join?id=KFD4KC&role=attend> \nMeeting ID
+	: MGWF7G\n\n\n
+DTEND:20090616T170000Z
+DTSTAMP:20090601T224919Z
+DTSTART:20090616T160000Z
+LAST-MODIFIED:20090612T182225Z
+LOCATION:Live Meeting
+PRIORITY:5
+SEQUENCE:0
+SUMMARY;LANGUAGE=en-us:SQL Server 2008 for Developers 
+TRANSP:OPAQUE
+UID:040000008200E00074C5B7101A82E00800000000A02D7386D0E2C901000000000000000
+	010000000F11A3BD59FD76246901D274D9C1EEFBC
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//E
+	N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange Server ve
+	rsion 08.00.0681.000">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n<!-- Converted f
+	rom text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LANG
+	="en-us"></SPAN><SPAN LANG="en-us"><U><FONT COLOR="#000066" FACE="Verdana"
+	>SQL Server 2008 for Developers</FONT></U></SPAN><SPAN LANG="en-us"></SPAN
+	><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT COLOR="#000066" FACE="
+	Verdana"></FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN
+	><SPAN LANG="en-us"> </SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"><B></B><
+	/SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B><FONT COLOR="
+	#000000" SIZE=2 FACE="Verdana">with Mladen Prajdic</FONT></B></SPAN><SPAN 
+	LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT COL
+	OR="#000000" SIZE=2 FACE="Verdana"></FONT></SPAN><SPAN LANG="en-us"></SPAN
+	><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"> </SPAN></P>\n\n<P DIR=LTR><
+	SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LAN
+	G="en-us"><B><FONT COLOR="#000000" SIZE=2 FACE="Verdana">Tuesday June 16th
+	 1:00pm EST</FONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us">
+	</SPAN><SPAN LANG="en-us"></SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></S
+	PAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT COLOR="#000000" SIZ
+	E=2 FACE="Verdana">What should developers know about database design so th
+	ey don't have</FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></
+	SPAN><SPAN LANG="en-us"><FONT FACE="Arial"></FONT></SPAN><SPAN LANG="en-us
+	"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"> <FONT COLOR="#00000
+	0" SIZE=2 FACE="Verdana">performance and logical problems?</FONT></SPAN><S
+	PAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPA
+	N></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><
+	SPAN LANG="en-us"><FONT COLOR="#000000" SIZE=2 FACE="Verdana">What's new i
+	n SQL Server 2008 that helps solve some business problems that sometime re
+	quired &quot\;hacking&quot\; before.</FONT></SPAN><SPAN LANG="en-us"></SP
+	AN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN></P>\n\n<P DIR=LTR>
+	<SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FO
+	NT COLOR="#000000" SIZE=2 FACE="Verdana">Concurrency design models and iso
+	lation levels.</FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><
+	/SPAN><SPAN LANG="en-us"></SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"><B><
+	/B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B><FONT SIZ
+	E=2 FACE="Arial">Live Meeting Information<BR>\nAttendee URL:</FONT></B></S
+	PAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPA
+	N LANG="en-us"><B><FONT SIZE=2 FACE="Arial"></FONT></B></SPAN><SPAN LANG="
+	en-us"> </SPAN><A HREF="https://www.livemeeting.com/cc/usergroups/join?id=
+	KFD4KC&amp\;role=attend"><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-u
+	s"><B></B></SPAN><SPAN LANG="en-us"><B><U><FONT COLOR="#336699" SIZE=2 FAC
+	E="Arial">https://www.livemeeting.com/cc/usergroups/join?id=MGWF7G&amp\;am
+	p\;role=attend&amp\;amp\;pw=2mqPKT%3E%3F</FONT></U></B></SPAN><SPAN LANG="
+	en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><
+	B><U><FONT COLOR="#336699" SIZE=2 FACE="Arial">H</FONT></U></B></SPAN><SPA
+	N LANG="en-us"></SPAN></A><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><BR
+	>\n</SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPA
+	N><SPAN LANG="en-us"><B><FONT SIZE=2 FACE="Arial">Meeting ID: MGWF7G</FONT
+	></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></S
+	PAN><SPAN LANG="en-us"><B><BR>\n</B></SPAN><SPAN LANG="en-us"></SPAN></P>\
+	n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LA
+	NG="en-us"></SPAN></P>\n\n</BODY>\n</HTML>
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MS-OLK-ALLOWEXTERNCHECK:TRUE
+X-MS-OLK-AUTOFILLLOCATION:FALSE
+X-MS-OLK-CONFTYPE:0
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR

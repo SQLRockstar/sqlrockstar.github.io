@@ -1,0 +1,165 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 12.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:PUBLISH
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VEVENT
+CLASS:PUBLIC
+CREATED:20090507T200111Z
+DESCRIPTION:BI SIG Integration Services Focus Group Presents:\nIntro to SSI
+	S Custom Component Development\nSpeaker: Anthony Dangelo \nMay 12th 12:00p
+	m ET\nTopic Description: You have tried so hard not to write code inside o
+	f SSIS\, but the day has arrived when you tired of writing the same script
+	 task over and over again. Don't fret creating a Custom Component is not a
+	s daunting as you might think. This session will integrate your logic with
+	 SSIS Components: variables\, pipeline\, and events. This session will exp
+	lore the design-time and run-time events\, the difference between Synchron
+	ous and Asynchronous Components\, and debugging techniques.\n \n\nNotes  \
+	nBlythe Morrow has invited you to attend an online meeting using Live Meet
+	ing. Join the meeting. <https://owa.sqlpass.org/owa/redir.aspx?URL=https%3
+	a%2f%2fwww.livemeeting.com%2fcc%2fusergroups%2fjoin%3fid%3d69RDJ4%26role%3
+	dattend>  \n\nAudio Information \nTelephone conferencing\nUse the informat
+	ion below to connect: \nToll-free: +1 (866) 379-8990 \nParticipant code: 6
+	489756 \nFirst Time Users: \nTo save time before the meeting\, check your 
+	system  <https://owa.sqlpass.org/owa/redir.aspx?URL=http%3a%2f%2fgo.micros
+	oft.com%2ffwlink%2f%3fLinkId%3d90703> to make sure it is ready to use Micr
+	osoft Office Live Meeting. \nTroubleshooting\nUnable to join the meeting? 
+	Follow these steps: \n1.	Copy this address and paste it into your web brow
+	ser: \nhttps://www.livemeeting.com/cc/usergroups/join <https://owa.sqlpass
+	.org/owa/redir.aspx?URL=https%3a%2f%2fwww.livemeeting.com%2fcc%2fusergroup
+	s%2fjoin>  \n2.	Copy and paste the required information: \nMeeting ID: 69R
+	DJ4 \nLocation: https://www.livemeeting.com/cc/usergroups <https://owa.sql
+	pass.org/owa/redir.aspx?URL=https%3a%2f%2fwww.livemeeting.com%2fcc%2fuserg
+	roups>  \nIf you still cannot enter the meeting\, contact support <https:/
+	/owa.sqlpass.org/owa/redir.aspx?URL=http%3a%2f%2fr.office.microsoft.com%2f
+	r%2frlidLiveMeeting%3fp1%3d12%26p2%3den_US%26p3%3dLMInfo%26p4%3dsupport> \
+	n\nNotice \nMicrosoft Office Live Meeting can be used to record meetings. 
+	By participating in this meeting\, you agree that your communications may 
+	be monitored or recorded at any time during the meeting. \n\n
+DTEND:20090512T170000Z
+DTSTAMP:20090507T200111Z
+DTSTART:20090512T160000Z
+LAST-MODIFIED:20090507T200111Z
+LOCATION:+18663798990   PC: 6489756
+PRIORITY:5
+SEQUENCE:0
+SUMMARY;LANGUAGE=en-us:PASS Webinar: Introduction to SSIS Custom Component 
+	Development
+TRANSP:OPAQUE
+UID:040000008200E00074C5B7101A82E00800000000C08BCF1809CFC901000000000000000
+	010000000A78CFB83164BFC48AA7EE080A5A1898D
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//E
+	N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange Server ve
+	rsion 08.00.0681.000">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n<!-- Converted f
+	rom text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="en-us"><B></B></SPAN><SP
+	AN LANG="en-us"><B><FONT FACE="Calibri">BI SIG Integration Services Focus
+	 Group Presents:<BR>\n</FONT></B></SPAN><SPAN LANG="en-us"><B><I></I></B><
+	/SPAN><SPAN LANG="en-us"><B><I><FONT COLOR="#E36C0A" FACE="Calibri">Intro 
+	to SSIS Custom Component Development</FONT></I></B></SPAN><SPAN LANG="en-u
+	s"><B></B></SPAN><SPAN LANG="en-us"><B><BR>\n</B></SPAN><SPAN LANG="en-us"
+	></SPAN><SPAN LANG="en-us"><FONT FACE="Calibri">Speaker</FONT></SPAN><SPAN
+	 LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B><FONT FACE="Calibri">: A
+	nthony Dangelo<BR>\n</FONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG
+	="en-us"><FONT FACE="Calibri">May 12th 12:00pm ET</FONT></SPAN><SPAN LANG=
+	"en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN></P>\n\
+	n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE="Calib
+	ri">Topic Description: You have tried so hard not to write code inside of 
+	SSIS\, but the day has arrived when you tired of writing the same script t
+	ask over and over again. Don't fret creating a Custom Component is not as 
+	daunting as you might think. This session will integrate your logic with S
+	SIS Components: variables\, pipeline\, and events. This session will explo
+	re the design-time and run-time events\, the difference between Synchronou
+	s and Asynchronous Components\, and debugging techniques.</FONT></SPAN><SP
+	AN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN
+	></P>\n\n<P DIR=LTR><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B
+	></B></SPAN><SPAN LANG="en-us"><B><FONT FACE="Arial"> </FONT></B></SPAN><
+	SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SP
+	AN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN></P>\n\n<P DIR=LTR><SPAN L
+	ANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-
+	us"><B><FONT SIZE=2 FACE="Tahoma">Notes</FONT></B></SPAN><SPAN LANG="en-us
+	"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT SIZE=2 FACE="T
+	ahoma"></FONT></SPAN><SPAN LANG="en-us"> <FONT FACE="Calibri"> </FONT></S
+	PAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN
+	><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma">Blythe Morrow has invited y
+	ou to attend an online meeting using Live Meeting.</FONT></SPAN><SPAN LANG
+	="en-us"> </SPAN><A HREF="https://owa.sqlpass.org/owa/redir.aspx?URL=https
+	%3a%2f%2fwww.livemeeting.com%2fcc%2fusergroups%2fjoin%3fid%3d69RDJ4%26role
+	%3dattend"><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SP
+	AN><SPAN LANG="en-us"><B><U><FONT COLOR="#0000FF" SIZE=2 FACE="Tahoma">Joi
+	n the meeting.</FONT></U></B></SPAN><SPAN LANG="en-us"></SPAN></A><SPAN LA
+	NG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT SIZE=
+	2 FACE="Tahoma"><BR>\n</FONT></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN
+	 LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN></P>\n\n<P DI
+	R=LTR><SPAN LANG="en-us"><B><FONT SIZE=2 FACE="Tahoma">Audio Information</
+	FONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN 
+	LANG="en-us"><FONT SIZE=2 FACE="Tahoma"><BR>\n</FONT></SPAN><SPAN LANG="en
+	-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B>
+	<FONT COLOR="#808080" SIZE=2 FACE="Tahoma">Telephone conferencing<BR>\n</F
+	ONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN L
+	ANG="en-us"><FONT SIZE=2 FACE="Tahoma">Use the information below to connec
+	t:<BR>\nToll-free: +1 (866) 379-8990<BR>\nParticipant code: 6489756<BR>\n<
+	/FONT></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></
+	SPAN><SPAN LANG="en-us"><B><FONT SIZE=2 FACE="Tahoma">First Time Users:</F
+	ONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN L
+	ANG="en-us"><FONT SIZE=2 FACE="Tahoma"><BR>\nTo save time before the meeti
+	ng\,</FONT></SPAN><SPAN LANG="en-us"> </SPAN><A HREF="https://owa.sqlpass.
+	org/owa/redir.aspx?URL=http%3a%2f%2fgo.microsoft.com%2ffwlink%2f%3fLinkId%
+	3d90703"><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="e
+	n-us"><U><FONT COLOR="#0000FF" SIZE=2 FACE="Tahoma">check your system</FON
+	T></U></SPAN><SPAN LANG="en-us"></SPAN></A><SPAN LANG="en-us"></SPAN><SPAN
+	 LANG="en-us"></SPAN><SPAN LANG="en-us"> <FONT SIZE=2 FACE="Tahoma">to mak
+	e sure it is ready to use Microsoft Office Live Meeting.<BR>\n</FONT></SPA
+	N><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN 
+	LANG="en-us"><B><FONT SIZE=2 FACE="Tahoma">Troubleshooting<BR>\n</FONT></B
+	></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en
+	-us"><FONT SIZE=2 FACE="Tahoma">Unable to join the meeting? Follow these s
+	teps:</FONT></SPAN><SPAN LANG="en-us"> </SPAN></P>\n\n<P DIR=LTR><SPAN LAN
+	G="en-us"><FONT SIZE=2 FACE="Tahoma">1.&nbsp\;&nbsp\;&nbsp\;&nbsp\;&nbsp\;
+	</FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LA
+	NG="en-us"> <FONT SIZE=2 FACE="Tahoma">Copy this address and paste it into
+	 your web browser:<BR>\n</FONT></SPAN><SPAN LANG="en-us"></SPAN><A HREF="h
+	ttps://owa.sqlpass.org/owa/redir.aspx?URL=https%3a%2f%2fwww.livemeeting.co
+	m%2fcc%2fusergroups%2fjoin"><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><
+	/SPAN><SPAN LANG="en-us"><U><FONT COLOR="#0000FF" SIZE=2 FACE="Tahoma">htt
+	ps://www.livemeeting.com/cc/usergroups/join</FONT></U></SPAN><SPAN LANG="e
+	n-us"></SPAN></A><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN
+	 LANG="en-us"><FONT SIZE=2 FACE="Tahoma"> </FONT></SPAN></P>\n\n<P DIR=LTR
+	><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma">2.&nbsp\;&nbsp\;&nbsp\;&nbs
+	p\;&nbsp\;</FONT> <FONT SIZE=2 FACE="Tahoma">Copy and paste the required i
+	nformation:<BR>\nMeeting ID: 69RDJ4<BR>\nLocation:</FONT></SPAN><SPAN LANG
+	="en-us"> </SPAN><A HREF="https://owa.sqlpass.org/owa/redir.aspx?URL=https
+	%3a%2f%2fwww.livemeeting.com%2fcc%2fusergroups"><SPAN LANG="en-us"></SPAN>
+	<SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><U><FONT COLOR="#0000FF" SIZE
+	=2 FACE="Tahoma">https://www.livemeeting.com/cc/usergroups</FONT></U></SPA
+	N><SPAN LANG="en-us"></SPAN></A><SPAN LANG="en-us"></SPAN><SPAN LANG="en-u
+	s"></SPAN><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma"></FONT></SPAN><SPA
+	N LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"> </SPAN
+	></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><S
+	PAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma">If you still cannot enter the 
+	meeting\,</FONT></SPAN><SPAN LANG="en-us"> </SPAN><A HREF="https://owa.sql
+	pass.org/owa/redir.aspx?URL=http%3a%2f%2fr.office.microsoft.com%2fr%2frlid
+	LiveMeeting%3fp1%3d12%26p2%3den_US%26p3%3dLMInfo%26p4%3dsupport"><SPAN LAN
+	G="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><U><FONT COL
+	OR="#0000FF" SIZE=2 FACE="Tahoma">contact support</FONT></U></SPAN><SPAN L
+	ANG="en-us"></SPAN></A><SPAN LANG="en-us"></SPAN></P>\n<BR>\n\n<P DIR=LTR>
+	<SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LA
+	NG="en-us"><B><FONT SIZE=2 FACE="Tahoma">Notice</FONT></B></SPAN><SPAN LAN
+	G="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT SIZE=2
+	 FACE="Tahoma"><BR>\nMicrosoft Office Live Meeting can be used to record m
+	eetings. By participating in this meeting\, you agree that your communicat
+	ions may be monitored or recorded at any time during the meeting.</FONT></
+	SPAN><SPAN LANG="en-us"> </SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SP
+	AN></P>\n\n</BODY>\n</HTML>
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MS-OLK-ALLOWEXTERNCHECK:TRUE
+X-MS-OLK-AUTOFILLLOCATION:FALSE
+X-MS-OLK-CONFTYPE:0
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR

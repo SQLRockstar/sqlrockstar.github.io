@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+    <head>
+        <title>SQLBatman recommended SQL Bloggers</title>
+    </head>
+    <body>
+        <outline title="Model Bloggers" text="Model">
+            <outline text="@bradmcgehee" title="Brad M McGehee"
+                type="rss"
+                xmlUrl="http://www.simple-talk.com/community/blogs/brad_mcgehee/rss.aspx" htmlUrl="http://www.simple-talk.com/community/blogs/brad_mcgehee/default.aspx"/>
+            <outline text="@drsql" title="Louis Davidson"
+                type="rss"
+                xmlUrl="http://sqlblog.com/blogs/louis_davidson/rss.aspx" htmlUrl="http://sqlblog.com/blogs/louis_davidson/default.aspx"/>
+            <outline text="@SQLFool" title="Michelle Ufford" type="rss"
+                xmlUrl="http://feeds.feedburner.com/SqlFool" htmlUrl="http://sqlfool.com"/>
+            <outline text="Gail is not on Twitter" title="Gail Shaw"
+                type="rss"
+                xmlUrl="http://sqlinthewild.co.za/index.php/feed/" htmlUrl="http://sqlinthewild.co.za"/>
+            <outline text="@AaronTheHOBT" title="Aaron Alton" type="rss"
+                xmlUrl="http://feeds2.feedburner.com/TheHobt" htmlUrl="http://thehobt.blogspot.com/"/>
+            <outline text="@jmkehayias" title="Jonathan Kehayias" type="rss"
+                xmlUrl="http://sqlblog.com/blogs/jonathan_kehayias/rss.aspx" htmlUrl="http://sqlblog.com/blogs/jonathan_kehayias/default.aspx"/>
+            <outline
+                text="Tony is not on Twitter"
+                title="Tony Rogerson"
+                type="rss"
+                xmlUrl="http://sqlblogcasts.com/blogs/tonyrogerson/rss.aspx" htmlUrl="http://sqlblogcasts.com/blogs/tonyrogerson/default.aspx"/>
+        </outline>
+        <outline title="Master Bloggers" text="master">
+            <outline text="Adam is not on Twitter" title="Adam Machanic"
+                type="rss"
+                xmlUrl="http://sqlblog.com/blogs/adam_machanic/rss.aspx" htmlUrl="http://sqlblog.com/blogs/adam_machanic/default.aspx"/>
+            <outline text="@BrentO"
+                title="Brent Ozar" type="rss"
+                xmlUrl="http://www.brentozar.com/feed/" htmlUrl="http://www.brentozar.com"/>
+            <outline text="Buck is not on Twitter" title="Buck Woody" type="rss"
+                xmlUrl="http://blogs.msdn.com/buckwoody/rss.xml" htmlUrl="http://blogs.msdn.com/buckwoody/default.aspx"/>
+            <outline text="Andy is not on Twitter" title="Andy Warren" type="rss"
+                xmlUrl="http://feeds.feedburner.com/itdepends" htmlUrl="http://www.sqlservercentral.com/blogs/andy_warren/default.aspx"/>
+            <outline text="@kekline" title="Kevin Kline" type="rss"
+                xmlUrl="http://sqlblog.com/blogs/kevin_kline/rss.aspx" htmlUrl="http://sqlblog.com/blogs/kevin_kline/default.aspx"/>
+            <outline text="@wayoutwest" title="Steve Jones" type="rss"
+                xmlUrl="http://feeds.feedburner.com/SqlMusings" htmlUrl="http://www.sqlservercentral.com/blogs/steve_jones/default.aspx"/>
+        </outline>
+        <outline title="Tempdb Bloggers" text="tempdb">
+            <outline text="Andrew Kelly" title="Andrew Kelly" type="rss"
+                xmlUrl="http://sqlblog.com/blogs/andrew_kelly/rss.aspx" htmlUrl="http://sqlblog.com/blogs/andrew_kelly/default.aspx"/>
+            <outline text="@BenchmarkIT"
+                title="Colin Stasiuk" type="rss"
+                xmlUrl="http://benchmarkitconsulting.com/feed/" htmlUrl="http://benchmarkitconsulting.com"/>
+            <outline text="peschkaj" title="Jeremiah Peschka" type="rss"
+                xmlUrl="http://facility9.com/feed/" htmlUrl="http://facility9.com"/>
+            <outline text="@gfritchey"
+                title="Grant Fritchey" type="rss"
+                xmlUrl="http://scarydba.wordpress.com/feed/" htmlUrl="http://scarydba.wordpress.com"/>
+            <outline text="Kendal Van Dyke" title="Kendal Van Dyke"
+                type="rss"
+                xmlUrl="http://kendalvandyke.blogspot.com/feeds/posts/default" htmlUrl="http://kendalvandyke.blogspot.com/"/>
+        </outline>
+        <outline title="Resourcedb Bloggers" text="resourcedb">
+            <outline text="Paul is not in Twitter" title="Paul Randal"
+                type="rss"
+                xmlUrl="http://sqlskills.com/BLOGS/PAUL/syndication.axd?format=rss" htmlUrl="http://sqlskills.com/BLOGS/PAUL/"/>
+            <outline text="Kimberly is not on Twitter" title="Kimberly L. Tripp"
+                type="rss"
+                xmlUrl="http://www.sqlskills.com/BLOGS/KIMBERLY/syndication.axd?format=rss" htmlUrl="http://www.sqlskills.com/BLOGS/KIMBERLY/"/>
+        </outline>
+        <outline title="Msdb Bloggers" text="msdb">
+            <outline text="@arcanecode" title="Robert Cain" type="rss"
+                xmlUrl="http://arcanecode.com/feed/" htmlUrl="http://arcanecode.com"/>
+            <outline text="@rodcolledge" title="Rod Colledge"
+                type="rss"
+                xmlUrl="http://www.rodcolledge.com/rod_colledge/atom.xml" htmlUrl="http://www.rodcolledge.com/rod_colledge/"/>
+            <outline text="@PinalDave"
+                title="Pinal Dave"
+                type="rss" xmlUrl="http://blog.sqlauthority.com/feed/" htmlUrl="http://blog.sqlauthority.com"/>
+            <outline text="Linchi Shea" title="Linchi Shea" type="rss"
+                xmlUrl="http://sqlblog.com/blogs/linchi_shea/rss.aspx" htmlUrl="http://sqlblog.com/blogs/linchi_shea/default.aspx"/>
+        </outline>
+    </body>
+</opml>

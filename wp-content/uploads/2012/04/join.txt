@@ -1,0 +1,62 @@
+/*quick script to show different results when
+the join syntax is altered*/
+USE [AdventureWorks]
+GO
+
+/*drop the tables if they already exist*/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TableA]') AND type in (N'U'))
+DROP TABLE [dbo].[TableA]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TableB]') AND type in (N'U'))
+DROP TABLE [dbo].[TableB]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TableC]') AND type in (N'U'))
+DROP TABLE [dbo].[TableC]
+GO
+
+/*create the tables, we only need the one column*/
+CREATE TABLE [dbo].[TableA]([c1] [tinyint] NOT NULL) ON [PRIMARY]
+GO
+CREATE TABLE [dbo].[TableB]([c1] [tinyint] NOT NULL) ON [PRIMARY]
+GO
+CREATE TABLE [dbo].[TableC]([c1] [tinyint] NOT NULL) ON [PRIMARY]
+GO
+
+/*populate the tables with some values, we don't need many. in fact
+we only need to have one value represent each of the seven
+possible regions in the 3-circle overlapping Venn diagram*/
+SET NOCOUNT ON
+INSERT INTO [dbo].[TableA] ([c1]) VALUES (1)
+INSERT INTO [dbo].[TableA] ([c1]) VALUES (2)
+INSERT INTO [dbo].[TableA] ([c1]) VALUES (3)
+INSERT INTO [dbo].[TableA] ([c1]) VALUES (5)
+INSERT INTO [dbo].[TableB] ([c1]) VALUES (1)
+INSERT INTO [dbo].[TableB] ([c1]) VALUES (3)
+INSERT INTO [dbo].[TableB] ([c1]) VALUES (4)
+INSERT INTO [dbo].[TableB] ([c1]) VALUES (6)
+INSERT INTO [dbo].[TableC] ([c1]) VALUES (1)
+INSERT INTO [dbo].[TableC] ([c1]) VALUES (2)
+INSERT INTO [dbo].[TableC] ([c1]) VALUES (4)
+INSERT INTO [dbo].[TableC] ([c1]) VALUES (7)
+GO
+
+/*ok, here is the magic, let's do a join using A.c1 twice
+and examine the four rows returned*/
+SELECT A.c1 as [A_val], B.c1 as [B_val], C.c1 as [C_val]
+FROM TableA A LEFT JOIN TableB B ON A.c1 = B.c1
+LEFT JOIN TableC C ON A.c1 = C.c1
+
+/*ok, let's change this to using B.c1*/
+SELECT A.c1 as [A_val], B.c1 as [B_val], C.c1 as [C_val]
+FROM TableA A LEFT JOIN TableB B ON A.c1 = B.c1
+LEFT JOIN TableC C ON B.c1 = C.c1
+
+/*See the difference in the results? The values in the C_val column
+are different depending on what you use for the join key.
+
+So if you were only looking at the C_val column in your select list
+you would be getting different results and you might not understand
+why, which can be a source of frustration for many as they try
+to get the right data returned.*/
+
+

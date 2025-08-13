@@ -1,0 +1,176 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 12.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:PUBLISH
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VEVENT
+CLASS:PUBLIC
+CREATED:20090514T134733Z
+DESCRIPTION:BI SIG Analysis Services Focus Group Presents:\nIntroduction to
+	 SSAS Dimensions\nSpeaker: Jessica M. Moss\nMay 26th 12:00pm ET \n\nTopic 
+	Description: SQL Server MVP Jessica M. Moss will provide an introduction t
+	o dimensions in SQL Server Analysis Services.  The presentation will discu
+	ss the different types of dimensions and how to create dimension attribute
+	s\, hierarchies\, and properties.  Finally\, we'll discuss the different p
+	roperties of dimensions used to create more performant SSAS processing and
+	 querying.\n\n \n\nNotes  \n\nBlythe Morrow has invited you to attend an o
+	nline meeting using Live Meeting. Join the meeting. <https://www.livemeeti
+	ng.com/cc/usergroups/join?id=2WTD22&role=attend> \n\n\nAudio Information\n
+	Telephone conferencing\nUse the information below to connect:\nToll-free: 
+	+1 (866) 379-8990\nParticipant code: 6489756\nFirst Time Users:\nTo save t
+	ime before the meeting\, check your system <https://go.microsoft.com/fwlin
+	k/?LinkId=90703>  to make sure it is ready to use Microsoft Office Live Me
+	eting.\nTroubleshooting\nUnable to join the meeting? Follow these steps: \
+	n\n1.      Copy this address and paste it into your web browser:\nhttps://
+	www.livemeeting.com/cc/usergroups/join \n\n2.      Copy and paste the requ
+	ired information:\nMeeting ID: 2WTD22\nLocation: https://www.livemeeting.c
+	om/cc/usergroups \n\nIf you still cannot enter the meeting\, contact suppo
+	rt <https://r.office.microsoft.com/r/rlidLiveMeeting?p1=12&p2=en_US&p3=LMI
+	nfo&p4=support> \n\n\nNotice\nMicrosoft Office Live Meeting can be used to
+	 record meetings. By participating in this meeting\, you agree that your c
+	ommunications may be monitored or recorded at any time during the meeting.
+	 \n\n
+DTEND:20090526T170000Z
+DTSTAMP:20090507T200433Z
+DTSTART:20090526T160000Z
+LAST-MODIFIED:20090514T134733Z
+LOCATION:+18663798990   PC: 6489756
+PRIORITY:5
+SEQUENCE:0
+SUMMARY;LANGUAGE=en-us:PASS Webinar: Introduction to SSAS Dimensions
+TRANSP:OPAQUE
+UID:040000008200E00074C5B7101A82E008000000004084E3B610CFC901000000000000000
+	01000000086CDC0F5C58F8540B795B5CF0A697D34
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//E
+	N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange Server ve
+	rsion 08.00.0681.000">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n<!-- Converted f
+	rom text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="en-us"><B></B></SPAN><SP
+	AN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B><FONT FACE="Calibri">B
+	I SIG Analysis Services Focus Group Presents:<BR>\n</FONT></B></SPAN><SPA
+	N LANG="en-us"><B><I></I></B></SPAN><SPAN LANG="en-us"><B><I></I></B></SPA
+	N><SPAN LANG="en-us"><B><I><FONT COLOR="#E36C0A" FACE="Calibri">Introducti
+	on to SSAS Dimensions</FONT></I></B></SPAN><SPAN LANG="en-us"><B></B></SPA
+	N><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B><BR>\n</B></SPAN>
+	<SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FO
+	NT FACE="Calibri">Speaker</FONT></SPAN><SPAN LANG="en-us"><B></B></SPAN><S
+	PAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B><FONT FACE="Calibri">
+	: Jessica M. Moss<BR>\n</FONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN L
+	ANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE="Calibri">May 26th 12:00
+	pm ET</FONT></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B>
+	</B></SPAN><SPAN LANG="en-us"><B><FONT FACE="Arial"> </FONT></B></SPAN><S
+	PAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPA
+	N></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><
+	SPAN LANG="en-us"><FONT FACE="Calibri">Topic Description: SQL Server MVP J
+	essica M. Moss will provide an introduction to dimensions in SQL Server An
+	alysis Services.  The presentation will discuss the different types of di
+	mensions and how to create dimension attributes\, hierarchies\, and proper
+	ties.  Finally\, we'll discuss the different properties of dimensions use
+	d to create more performant SSAS processing and querying.</FONT></SPAN><SP
+	AN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN
+	></P>\n\n<P DIR=LTR><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B
+	></B></SPAN><SPAN LANG="en-us"><B><FONT FACE="Arial"> </FONT></B></SPAN><
+	SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SP
+	AN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us">
+	<B></B></SPAN><SPAN LANG="en-us"><B><FONT SIZE=2 FACE="Tahoma">Notes</FONT
+	></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG
+	="en-us"><FONT FACE="Arial"></FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN 
+	LANG="en-us"></SPAN><SPAN LANG="en-us"> <FONT FACE="Calibri"> </FONT></SP
+	AN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us">
+	</SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></S
+	PAN><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma">Blythe Morrow has invite
+	d you to attend an online meeting using Live Meeting.</FONT></SPAN><SPAN L
+	ANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE
+	="Arial"></FONT></SPAN><SPAN LANG="en-us"> </SPAN><A HREF="https://www.liv
+	emeeting.com/cc/usergroups/join?id=2WTD22&amp\;role=attend"><SPAN LANG="en
+	-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B>
+	<U><FONT COLOR="#0000FF" SIZE=2 FACE="Tahoma">Join the meeting.</FONT></U>
+	</B></SPAN><SPAN LANG="en-us"></SPAN></A><SPAN LANG="en-us"></SPAN><SPAN L
+	ANG="en-us"></SPAN><SPAN LANG="en-us"><BR>\n</SPAN><SPAN LANG="en-us"></SP
+	AN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN></P>\n\n<P DIR=LTR>
+	<SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LA
+	NG="en-us"><B><FONT SIZE=2 FACE="Tahoma">Audio Information</FONT></B></SPA
+	N><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><
+	BR>\n</SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B></B></S
+	PAN><SPAN LANG="en-us"><B><FONT COLOR="#808080" SIZE=2 FACE="Tahoma">Telep
+	hone conferencing<BR>\n</FONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN L
+	ANG="en-us"></SPAN><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma">Use the i
+	nformation below to connect:<BR>\nToll-free: +1 (866) 379-8990<BR>\nPartic
+	ipant code: 6489756<BR>\n</FONT></SPAN><SPAN LANG="en-us"><B></B></SPAN><S
+	PAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B><FONT SIZE=2 FACE="Ta
+	homa">First Time Users:</FONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN L
+	ANG="en-us"></SPAN><SPAN LANG="en-us"><BR>\n<FONT SIZE=2 FACE="Tahoma">To 
+	save time before the meeting\,</FONT></SPAN><SPAN LANG="en-us"></SPAN><SPA
+	N LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE="Arial"></FONT></SPAN>
+	<SPAN LANG="en-us"> </SPAN><A HREF="https://go.microsoft.com/fwlink/?LinkI
+	d=90703"><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="e
+	n-us"><U><FONT COLOR="#0000FF" SIZE=2 FACE="Tahoma">check your system</FON
+	T></U></SPAN><SPAN LANG="en-us"></SPAN></A><SPAN LANG="en-us"></SPAN><SPAN
+	 LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE="Arial"></FONT></SPAN><
+	SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"> <FO
+	NT SIZE=2 FACE="Tahoma">to make sure it is ready to use Microsoft Office L
+	ive Meeting.<BR>\n</FONT></SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LAN
+	G="en-us"><B></B></SPAN><SPAN LANG="en-us"><B><FONT SIZE=2 FACE="Tahoma">T
+	roubleshooting<BR>\n</FONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG
+	="en-us"></SPAN><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma">Unable to jo
+	in the meeting? Follow these steps:</FONT></SPAN><SPAN LANG="en-us"></SPAN
+	><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE="Arial"> </FONT><
+	/SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SP
+	AN><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma">1.     </FONT></SPAN
+	><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><F
+	ONT FACE="Arial"></FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us
+	"></SPAN><SPAN LANG="en-us"> <FONT SIZE=2 FACE="Tahoma">Copy this address 
+	and paste it into your web browser:<BR>\n</FONT></SPAN><SPAN LANG="en-us">
+	</SPAN><A HREF="https://www.livemeeting.com/cc/usergroups/join"><SPAN LANG
+	="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><U><FONT COLO
+	R="#0000FF" SIZE=2 FACE="Tahoma">https://www.livemeeting.com/cc/usergroups
+	/join</FONT></U></SPAN><SPAN LANG="en-us"></SPAN></A><SPAN LANG="en-us"></
+	SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahom
+	a"></FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN
+	 LANG="en-us"> </SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN L
+	ANG="en-us"></SPAN><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma">2.   
+	  </FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPA
+	N LANG="en-us"><FONT FACE="Arial"></FONT></SPAN><SPAN LANG="en-us"></SPAN>
+	<SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"> <FONT SIZE=2 FACE="Tahoma">C
+	opy and paste the required information:<BR>\nMeeting ID:</FONT></SPAN><SPA
+	N LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT F
+	ACE="Arial"></FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></S
+	PAN><SPAN LANG="en-us"> <FONT FACE="Calibri">2WTD22</FONT></SPAN><SPAN LAN
+	G="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><BR>\n<FONT 
+	SIZE=2 FACE="Tahoma">Location:</FONT></SPAN><SPAN LANG="en-us"></SPAN><SPA
+	N LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE="Arial"></FONT></SPAN>
+	<SPAN LANG="en-us"> </SPAN><A HREF="https://www.livemeeting.com/cc/usergro
+	ups"><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us
+	"><U><FONT COLOR="#0000FF" SIZE=2 FACE="Tahoma">https://www.livemeeting.co
+	m/cc/usergroups</FONT></U></SPAN><SPAN LANG="en-us"></SPAN></A><SPAN LANG=
+	"en-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE="Ar
+	ial"> </FONT></SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN><SPAN LAN
+	G="en-us"></SPAN><SPAN LANG="en-us"><FONT SIZE=2 FACE="Tahoma">If you stil
+	l cannot enter the meeting\,</FONT></SPAN><SPAN LANG="en-us"></SPAN><SPAN 
+	LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE="Arial"></FONT></SPAN><S
+	PAN LANG="en-us"> </SPAN><A HREF="https://r.office.microsoft.com/r/rlidLiv
+	eMeeting?p1=12&amp\;p2=en_US&amp\;p3=LMInfo&amp\;p4=support"><SPAN LANG="e
+	n-us"></SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><U><FONT COLOR="
+	#0000FF" SIZE=2 FACE="Tahoma">contact support</FONT></U></SPAN><SPAN LANG=
+	"en-us"></SPAN></A><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"></SPAN><SP
+	AN LANG="en-us"></SPAN></P>\n<BR>\n\n<P DIR=LTR><SPAN LANG="en-us"><B></B>
+	</SPAN><SPAN LANG="en-us"><B></B></SPAN><SPAN LANG="en-us"><B><FONT SIZE=2
+	 FACE="Tahoma">Notice</FONT></B></SPAN><SPAN LANG="en-us"></SPAN><SPAN LAN
+	G="en-us"></SPAN><SPAN LANG="en-us"><BR>\n<FONT SIZE=2 FACE="Tahoma">Micro
+	soft Office Live Meeting can be used to record meetings. By participating 
+	in this meeting\, you agree that your communications may be monitored or r
+	ecorded at any time during the meeting.</FONT></SPAN><SPAN LANG="en-us"></
+	SPAN><SPAN LANG="en-us"></SPAN><SPAN LANG="en-us"><FONT FACE="Arial"> </FO
+	NT></SPAN></P>\n\n</BODY>\n</HTML>
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MS-OLK-ALLOWEXTERNCHECK:TRUE
+X-MS-OLK-AUTOFILLLOCATION:FALSE
+X-MS-OLK-CONFTYPE:0
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR

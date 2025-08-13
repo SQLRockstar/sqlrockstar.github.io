@@ -1,0 +1,72 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 12.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:PUBLISH
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VEVENT
+CLASS:PUBLIC
+CREATED:20090608T195114Z
+DESCRIPTION:with Ryan Fonnett\nTuesday June 9th 12:00pm EST \nSSIS is a hig
+	h performance Microsoft ETL tool that is part of the Business Intelligence
+	 Design Studio.  It is primarily used to pull data from one or more data s
+	ources into an in memory dataset that is massaged and then loaded into one
+	 or more data destinations. The presentation will include an introduction 
+	to SSIS and a couple of demos that will help you with designing and buildi
+	ng your first SSIS package!\n\n
+DTEND:20090609T170000Z
+DTSTAMP:20090601T223726Z
+DTSTART:20090609T160000Z
+LAST-MODIFIED:20090608T195114Z
+LOCATION:Con Call
+PRIORITY:5
+SEQUENCE:0
+SUMMARY;LANGUAGE=en-ca:Introduction to SSIS
+TRANSP:OPAQUE
+UID:040000008200E00074C5B7101A82E00800000000F03797E7CDE2C901000000000000000
+	010000000F51D50DC8791BE43A9655C72370640C2
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//E
+	N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange Server ve
+	rsion 08.00.0681.000">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n<!-- Converted f
+	rom text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="en-ca"><B></B></SPAN><SP
+	AN LANG="en-ca"><B></B></SPAN><SPAN LANG="en-ca"><B></B></SPAN><B><SPAN LA
+	NG="en-ca"><FONT COLOR="#000000" SIZE=2 FACE="Verdana">with Ryan Fonnett<
+	/FONT></SPAN></B><SPAN LANG="en-ca"><B></B></SPAN><SPAN LANG="en-ca"><B></
+	B></SPAN><SPAN LANG="en-ca"><B></B></SPAN><B><SPAN LANG="en-ca"><BR>\n</SP
+	AN></B><SPAN LANG="en-ca"><B></B></SPAN><SPAN LANG="en-ca"><B></B></SPAN><
+	SPAN LANG="en-ca"><B></B></SPAN><B><SPAN LANG="en-ca"><FONT COLOR="#000000
+	" SIZE=2 FACE="Verdana">Tuesday June 9th 12:00pm EST</FONT></SPAN></B><SPA
+	N LANG="en-ca"></SPAN><SPAN LANG="en-ca"></SPAN><SPAN LANG="en-ca"></SPAN>
+	<SPAN LANG="en-ca"><FONT COLOR="#000000" SIZE=2 FACE="Verdana"> </FONT></S
+	PAN></P>\n\n<P DIR=LTR><SPAN LANG="en-ca"><FONT COLOR="#000000" SIZE=2 FAC
+	E="Verdana">SSIS is a high performance Microsoft ETL tool that is part of 
+	the Business Intelligence Design Studio.  It is primarily used to pull da
+	ta from one or more data sources into an in memory dataset that is massage
+	d and then loaded into one or more data destinations. The presentation wil
+	l include an introduction to SSIS and a couple of demos that will help you
+	 with designing and building your first SSIS package!</FONT></SPAN></P>\n\
+	n<P DIR=LTR><SPAN LANG="en-ca"><B></B></SPAN><SPAN LANG="en-ca"><B></B></S
+	PAN><SPAN LANG="en-ca"><B><FONT SIZE=2 FACE="Arial">Live Meeting Informati
+	on<BR>\nAttendee URL: </FONT></B></SPAN><SPAN LANG="en-ca"> </SPAN><A HRE
+	F="https://www.livemeeting.com/cc/usergroups/join?id=KFD4KC&amp\;role=atte
+	nd"><SPAN LANG="en-ca"><B></B></SPAN><SPAN LANG="en-ca"><B></B></SPAN><SPA
+	N LANG="en-ca"><B><FONT COLOR="#336699" SIZE=2 FACE="Arial">https://www.li
+	vemeeting.com/cc/usergroups/join?id=KFD4KC&amp\;role=attend</FONT></B></SP
+	AN><SPAN LANG="en-ca"></SPAN></A><SPAN LANG="en-ca"></SPAN><SPAN LANG="en-
+	ca"></SPAN><SPAN LANG="en-ca"><BR>\n</SPAN><SPAN LANG="en-ca"><B></B></SPA
+	N><SPAN LANG="en-ca"><B></B></SPAN><SPAN LANG="en-ca"><B><FONT SIZE=2 FACE
+	="Arial">Meeting ID:  KFD4KC<BR>\nToll free: 1 (866) 379-8990<BR>\nPartic
+	ipant code: 6489756</FONT></B></SPAN><SPAN LANG="en-ca"></SPAN><SPAN LANG=
+	"en-ca"></SPAN></P>\n\n</BODY>\n</HTML>
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MS-OLK-ALLOWEXTERNCHECK:TRUE
+X-MS-OLK-AUTOFILLLOCATION:FALSE
+X-MS-OLK-CONFTYPE:0
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR
