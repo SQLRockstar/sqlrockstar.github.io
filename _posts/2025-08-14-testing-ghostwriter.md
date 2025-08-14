@@ -13,3 +13,7 @@ Like this image, for example:
 ![](Blogs/sqlrockstar.github.io/wp-content/uploads/2016/08/mcqueen_tipo-800x600.jpg)
 
 oh! i think i need to run this editor from the /Blogs directory instead. 
+
+trying this again
+
+![](../wp-content/uploads/2014/09/db_mirror_null_6.jpg)
