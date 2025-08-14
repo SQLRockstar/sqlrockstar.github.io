@@ -1,0 +1,12 @@
+---
+layout: page
+title: "SQL Server Connectivity"
+date: 2018-02-09 14:47:14 +0000
+author: sqlrockstar
+original_url: https://thomaslarock.com/sql-server-connectivity/
+---
+[![SQL Server Connectivity](https://thomaslarock.com/wp-content/uploads/2017/03/SQLServerConnectivity.png)](https://thomaslarock.com/wp-content/uploads/2017/03/SQLServerConnectivity.png) Connecting to SQL Server should be a simple task. However, there are many ways a connection may fail. Microsoft has a handful of KB articles to help, but they are not listed in one place. So, I put together this page to keep track of the support pages that Microsoft has created to troubleshoot common SQL Server connectivity errors. 
+
+## Useful Links For SQL Server Connectivity Troubleshooting
+
+[Solving Connectivity errors to SQL Server](https://support.microsoft.com/en-us/help/4009936/solving-connectivity-errors-to-sql-server) This page is great for troubleshooting basic connection issues. It provides details you need for troubleshooting, and it tells you where to find the information. With the necessary data collected you can diagnose and fix issues in a few minutes. [Troubleshooting AlwaysOn Issues](https://support.microsoft.com/en-us/help/10179/troubleshooting-alwayson-issues) This page does more than troubleshoot connections issues for Availability Groups. It also helps with issues such as the failover to a secondary node, and how to manage the size of the transaction log for the AG databases. It's a great first reference point for anyone that needs to quickly diagnose an issue with AGs. [Troubleshooting connectivity issues with Microsoft Azure SQL Database](https://support.microsoft.com/en-in/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database) This page contains the most information I have seen regarding Azure SQL Database connectivity troubleshooting. There are sections to help you understand [the tools used to test connectivity](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connectivity-issues#diagnostics). [SQL Server Connection strings](https://www.connectionstrings.com/sql-server/) A list of connection strings for SQL Server. You can even search by version. [Troubleshooting Azure Connectivity: Ports and Endpoints](https://thomaslarock.com/2015/04/troubleshooting-azure-connectivity-ports-and-endpoints/) A personal story about life, love, and why the network is always to blame. Always. I will add links to new pages as they become available. If you know a page to include, leave a comment for me to review. Thanks!
