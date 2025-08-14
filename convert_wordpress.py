@@ -133,8 +133,8 @@ def create_jekyll_post(post_data, output_dir):
         post_dir = os.path.join(output_dir, '_posts')
         filename = f"{post_data['date']}-{clean_title}.md"
     else:
-        # For pages, use a cleaner structure
-        post_dir = output_dir
+        # For pages, put them in a converted-pages directory to avoid overwriting
+        post_dir = os.path.join(output_dir, 'converted-pages')
         filename = f"{clean_title}.md"
     
     # Determine layout based on post type
