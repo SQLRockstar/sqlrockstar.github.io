@@ -161,5 +161,6 @@ original_url: https://thomaslarock.com/blog/
     
     <div class="back-home">
         <a href="/">← Back to Home</a>
+        <a href="https://thomaslarock.com/portfolio/">← Portfolio</a>
     </div>
 </div>
