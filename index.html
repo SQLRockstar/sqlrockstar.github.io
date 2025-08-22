@@ -744,48 +744,6 @@
             <p>&copy; <span id="current-year"></span> Thomas LaRock. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Header background on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(15, 15, 35, 0.98)';
-            } else {
-                header.style.background = 'rgba(15, 15, 35, 0.95)';
-            }
-        });
-
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-on-scroll');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.stat-item, .skill-category, .project-card').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -23,6 +23,9 @@ collections:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-paginate
+  
+excerpt_separator: <!--more-->
 
 # Exclude from processing
 exclude:
