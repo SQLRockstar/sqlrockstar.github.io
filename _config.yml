@@ -19,6 +19,10 @@ collections:
     output: true
     permalink: /:year/:month/:title/
 
+# Pagination settings
+paginate: 10
+paginate_path: "/blog/page:num/"
+
 # Plugins
 plugins:
   - jekyll-feed
