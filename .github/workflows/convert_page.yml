@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -39,3 +39,5 @@ jobs:
         with:
           name: converted-page-${{ github.run_number }}
           path: ${{ env.HTML_OUTPUT }}
+
+
