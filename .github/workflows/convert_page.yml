@@ -3,8 +3,8 @@ name: Convert Single Markdown Page
 on:
   workflow_dispatch:
     inputs:
-      markdown_file: sqlserverbooks.md
-        description: 'The Markdown file to convert (e.g., about.md)'
+      markdown_file: 
+        description: sqlserverbooks.md
         required: true
         default: 'README.md'
       
