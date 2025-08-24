@@ -35,7 +35,7 @@ jobs:
         run: python convert.py "${{ github.event.inputs.markdown_file }}" "${{ env.HTML_OUTPUT }}"
         
       - name: Upload converted HTML file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: converted-page-${{ github.run_number }}
           path: ${{ env.HTML_OUTPUT }}
