@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       markdown_file:
-        description: 'sql-server-books.md'
+        description: 'The Markdown file to convert'
         required: true
-        default: 'README.md'
-
+        default: 'sql-server-books.md'
+      
 jobs:
   convert:
     runs-on: ubuntu-latest
