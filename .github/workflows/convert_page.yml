@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       markdown_file:
-        description: 'The Markdown file to convert (e.g., about.md)'
+        description: 'sql-server-books.md'
         required: true
         default: 'README.md'
 
