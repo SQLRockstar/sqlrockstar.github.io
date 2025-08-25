@@ -34,7 +34,7 @@ jobs:
 
       - name: Convert the Markdown file
         run: |
-          python ./convert_wordpress.py "${{ github.event.inputs.markdown_file }}" "${{ env.HTML_OUTPUT }}"
+          python ./convert.py "${{ github.event.inputs.markdown_file }}" "${{ env.HTML_OUTPUT }}"
         
       - name: Upload converted HTML file
         uses: actions/upload-artifact@v4
