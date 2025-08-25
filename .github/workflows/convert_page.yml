@@ -3,11 +3,11 @@ name: Convert Single Markdown Page
 on:
   workflow_dispatch:
     inputs:
-      markdown_file: 
-        description: sqlserverbooks.md
+      markdown_file:
+        description: 'The Markdown file to convert (e.g., about.md)'
         required: true
         default: 'README.md'
-      
+
 jobs:
   convert:
     runs-on: ubuntu-latest
@@ -26,18 +26,18 @@ jobs:
           pip install markdown beautifulsoup4
 
       - name: Define output path
+        id: define-path
         run: |
           MD_FILE="${{ github.event.inputs.markdown_file }}"
           HTML_OUTPUT="${MD_FILE%.md}.html"
-          echo "HTML_OUTPUT=$HTML_OUTPUT" >> $GITHUB_ENV
-        
+          echo "HTML_OUTPUT=$HTML_OUTPUT" >> "$GITHUB_ENV"
+
       - name: Convert the Markdown file
         run: python convert.py "${{ github.event.inputs.markdown_file }}" "${{ env.HTML_OUTPUT }}"
-        
+        working-directory: ${{ github.workspace }}
+
       - name: Upload converted HTML file
         uses: actions/upload-artifact@v4
         with:
           name: converted-page-${{ github.run_number }}
           path: ${{ env.HTML_OUTPUT }}
-
-
