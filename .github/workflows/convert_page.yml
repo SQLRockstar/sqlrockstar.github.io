@@ -33,7 +33,7 @@ jobs:
           echo "HTML_OUTPUT=$HTML_OUTPUT" >> "$GITHUB_ENV"
 
       - name: Convert the Markdown file
-        run: python convert.py "${{ github.event.inputs.markdown_file }}" "${{ env.HTML_OUTPUT }}"
+        run: python convert_markdown_pages_to_html.py "${{ github.event.inputs.markdown_file }}" "${{ env.HTML_OUTPUT }}"
         
       - name: Upload converted HTML file
         uses: actions/upload-artifact@v4
