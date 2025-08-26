@@ -14,6 +14,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # This is required for committing changes
+          token: ${{ secrets.GITHUB_TOKEN }} 
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -35,6 +38,12 @@ jobs:
       - name: Convert the Markdown file
         run: python convert_markdown_pages_to_html.py "${{ github.event.inputs.markdown_file }}" "${{ env.HTML_OUTPUT }}"
         
+      - name: Add and Commit the new HTML file
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "feat: add converted HTML page for ${{ github.event.inputs.markdown_file }}"
+          branch: main
+          
       - name: Upload converted HTML file
         uses: actions/upload-artifact@v4
         with:
