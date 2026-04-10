@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <link rel="icon" type="image/x-icon" href="/gravatar.png">
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #007acc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #005a9a;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+            margin-right: auto;
+        }
+
+        main {
+            min-height: calc(100vh - 200px);
+        }
+
+        .post-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer {
+            border-top: 1px solid #eee;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9VVN386N26"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9VVN386N26');
+</script>
+
+<body>
+    <header>
+        <nav>
+            <a href="/" class="site-title">{{ site.title }}</a>
+            <a href="/">Home</a>
+            <a href="/blog">Blog</a>
+            <a href="/portfolio.html">Portfolio</a>
+            <a href="https://www.linkedin.com/newsletters/data-on-the-rocks-7079926499453136896/" target="_blank">Data On the Rocks</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="post-content">
+            <h1>{{ page.title }}</h1>
+            <p style="color: #666; margin-bottom: 2rem;">{{ page.date | date: "%B %d, %Y" }}</p>
+            {{ content }}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
