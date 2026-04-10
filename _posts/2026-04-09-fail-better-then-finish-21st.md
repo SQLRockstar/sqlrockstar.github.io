@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 layout: post
 title: Fail Better, Then Finish 21st
