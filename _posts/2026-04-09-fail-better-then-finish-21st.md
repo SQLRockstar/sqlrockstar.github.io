@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 layout: post
 title: Fail Better, Then Finish 21st
@@ -84,7 +83,7 @@ categories:
 </tbody>
 </table>
 
-<br></br>
+<br>
 
 <p>A few things stand out here.</p>
 
@@ -566,5 +565,3 @@ categories:
 <p>And the upset injection proof is now a permanent part of my toolkit. Not because I needed a mathematical proof to tell me to trust my model, but because having one means I will never second-guess it again in the heat of the tournament. There is something freeing about knowing the math is on your side.</p>
 
 <p>21st place is a good result. It is not a finished result. I will be back next March with better features, a cleaner ensemble, and one fewer model nobody needed.</p>
->>>>>>> 45c67d434710ac9e1b8f9aa0bce69e70a2955aba
->>>>>>> 33de71800320cf64f8c7b49706d32d2c28e6fbf8
