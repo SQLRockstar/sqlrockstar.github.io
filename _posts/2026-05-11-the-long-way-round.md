@@ -36,7 +36,7 @@ tags: georgia-tech analytics omsa career stoicism
 
 <p>One year turned into three. Life is what happens when you are busy making other plans.</p>
 
-<p>Getting back into academia proved harder than expected. Funded positions were competitive, and I was working to improve my GRE scores while applying anywhere that might give me a shot. Eventually, I found the right fit at Washington State University, where I earned my Master’s in Mathematics and was given the opportunity to grow into the work. Along the way, my girlfriend became my fiancée, and I found myself facing a new question: *What do now?*</p>
+<p>Getting back into academia proved harder than expected. Funded positions were competitive, and I was working to improve my GRE scores while applying anywhere that might give me a shot. Eventually, I found the right fit at Washington State University, where I earned my Master’s in Mathematics and was given the opportunity to grow into the work. Along the way, my girlfriend became my fiancée, and I found myself facing a new question: <a href="https://www.youtube.com/watch?v=UaO8RHLCwQ0&t=100s">"What do now?"</a></p>
 
 <p>At one point, I thought the answer might be college basketball.</p>
 
